@@ -1,5 +1,10 @@
+
 export default function desktop() {
     return (
-        <div className="bg-red-500">aaaaaaa</div>
+        <>
+            <section className="bg-desktop h-screen w-full  bg-cover">
+                <div className=""></div>
+            </section>
+        </>
     )
-}
+} 

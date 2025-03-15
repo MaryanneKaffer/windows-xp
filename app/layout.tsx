@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en" className={tahoma.variable}>
       <head />
-      <body className="justify-self-center max-w-[800px] max-h-[800px] w-screen h-screen font-tahoma">
+      <body className="justify-self-center max-w-[1440px] max-h-[900px] w-screen h-screen font-tahoma">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main>
             {children}

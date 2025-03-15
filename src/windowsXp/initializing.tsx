@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Desktop from "./Desktop";
-import Loading from "./loading";
+import Startup from "./startup";
 
 export default function Initializing() {
     const [visible, setVisible] = useState(true);
@@ -23,10 +23,10 @@ export default function Initializing() {
         };
     }, []);
 
-    if (!showComponent) return <Loading />;
+    if (!showComponent) return <Startup />;
 
     return (
-        <div className="text-4xl text-gray bg-black">
+        <div className="text-4xl text-gray bg-black cursor-none h-screen w-full">
             <h2 className={`mx-2 ${visible ? "" : "hidden"}`}>_</h2>
         </div>
     );
