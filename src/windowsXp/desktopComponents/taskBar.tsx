@@ -1,6 +1,7 @@
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { SystemTray } from "@/config/data/systemTrayData";
 import LogoIcon from "@/public/logo/logoIcon.png";
-import { useState, useEffect } from "react";
 
 export default function TaskBar() {
     const [time, setTime] = useState(new Date());
@@ -17,7 +18,7 @@ export default function TaskBar() {
         <>
             <section className="w-full h-screen flex">
                 <div className="w-full h-[48px] bg-taskBar self-end flex">
-                    <button className="bg-startButton active:brightness-75 h-full lg:w-[180px] w-[100px] rounded-r-2xl drop-shadow-[0px_10px_10px_rgba(0,0,0,0.9)] flex place-items-center gap-2">
+                    <button type="button" className="bg-startButton active:brightness-75 h-full lg:w-[180px] w-[100px] rounded-r-2xl drop-shadow-[0px_10px_10px_rgba(0,0,0,0.9)] flex place-items-center gap-2">
                         <img src={LogoIcon.src} className="h-[30px] lg:ml-4 ml-[10px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]"></img>
                         <p className="lg:block hidden font-arial font-bold italic text-3xl drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]">start</p>
                     </button>
@@ -28,7 +29,7 @@ export default function TaskBar() {
                             {SystemTray.map((item, index) => (
                                 <div key={index}>
                                     <button className="h-full size-[25px] active:brightness-75 place-items-center rounded-full cursor-default lg:block hidden">
-                                        <img src={typeof item.icon === "string" ? item.icon : item.icon.src} className="w-[25px] h-[25px]"></img>
+                                        <Image src={item.icon} className="w-[25px] h-[25px]" alt={item.name}/>
                                     </button>
                                 </div>
                             ))}
