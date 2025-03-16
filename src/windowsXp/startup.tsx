@@ -9,10 +9,11 @@ export default function Startup() {
   const [showWelcome, setShowWelcome] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [showDesktop, setShowDesktop] = useState(false);
-  const playAudio = useAudioStore(
-    (state: { playAudio: any }) => state.playAudio,
-  );
+  
   useEffect(() => {
+    const playAudio = useAudioStore(
+      (state: { playAudio: any }) => state.playAudio,
+    );
     const timeout = setTimeout(() => {
       setShowStartUp(false);
       setShowWelcome(true);
@@ -24,9 +25,9 @@ export default function Startup() {
         playAudio();
       }, 2000);
     }, 6000);
-
+    
     return () => clearTimeout(timeout);
-  }, [playAudio]);
+  }, []);
 
   if (showDesktop) return <Desktop />;
   return (

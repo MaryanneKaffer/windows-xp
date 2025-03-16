@@ -1,3 +1,4 @@
+"use client";
 import { create } from "zustand";
 
 interface AudioStore {
@@ -5,13 +6,16 @@ interface AudioStore {
   playAudio: () => void;
 }
 
-export const useAudioStore = create<AudioStore>((set) => {
-  let audio = new Audio("/audio/startUpSound.mp3");
+export const useAudioStore = create<AudioStore>(() => {
+  let audio: HTMLAudioElement | null = null;
 
   return {
     audio,
     playAudio: () => {
-      if (audio.paused) {
+      if (typeof window !== "undefined") {
+        if (!audio) {
+          audio = new Audio("/audio/startUpSound.mp3");
+        }
         audio.play();
       }
     },

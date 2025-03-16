@@ -1,7 +1,7 @@
 import { Viewport } from "next";
-import { Providers } from "./providers";
 import tahoma from "../config/fonts/tahoma";
 import "@/styles/globals.css";
+import { Providers } from "./providers";
 
 export const viewport: Viewport = {
   themeColor: [
