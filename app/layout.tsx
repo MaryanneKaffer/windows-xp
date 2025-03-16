@@ -4,20 +4,8 @@ import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
+
 
 export const viewport: Viewport = {
   themeColor: [
@@ -34,7 +22,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en" className={tahoma.variable}>
       <head />
-      <body className="justify-self-center max-w-[1440px] max-h-[900px] w-screen h-screen font-tahoma">
+      <body className="justify-self-center max-w-[1440px] max-h-[900px] w-screen h-screen font-tahoma overflow-hidden">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main>
             {children}
