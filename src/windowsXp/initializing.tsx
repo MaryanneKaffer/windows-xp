@@ -8,7 +8,7 @@ export default function Initializing() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setVisible((prev) => !prev);
+      setVisible((prev: any) => !prev);
     }, 200);
 
     const timeout = setTimeout(() => {
