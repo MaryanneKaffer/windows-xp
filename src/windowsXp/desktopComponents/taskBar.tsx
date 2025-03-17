@@ -18,7 +18,7 @@ export default function TaskBar() {
     }, []);
 
     return (
-        <section className="w-full h-screen flex">
+        <section className="min-h-screen w-full flex">
             <div className="w-full h-[48px] bg-taskBar self-end flex">
                 <Popover onOpenChange={setIsOpen}>
                     <PopoverTrigger asChild>
