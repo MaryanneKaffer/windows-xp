@@ -42,7 +42,7 @@ export default function Startup() {
               width={300}
               height={200}
             />
-            <div className="border-gray border-3 rounded-lg p-[3px] w-72 justify-self-center self-center overflow-hidden">
+            <div className="border-white border-3 rounded-lg p-[3px] w-72 justify-self-center self-center overflow-hidden">
               <div className="animate-moving flex gap-1">
                 <div className="h-5 w-4 bg-startUp1 rounded-sm"></div>
                 <div className="h-5 w-4 bg-startUp2 rounded-sm"></div>

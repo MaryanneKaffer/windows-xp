@@ -1,4 +1,3 @@
-import volumeIcon from "@/public/icons/volumeIcon.png";
 import windowsDefenderIcon from "@/public/icons/defenderIcon.png";
 import firewall from "@/public/icons/fireWallIcon.png";
 import myComputer from "@/public/icons/myComputerIcon.png";

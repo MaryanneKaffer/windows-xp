@@ -1,0 +1,72 @@
+import Image from "next/image";
+import userProfile from "@/public/user/user.png";
+import { leftColumn } from "@/config/data/startMenuData";
+import startMenuArrow from "@/public/icons/startMenuArrow.png";
+import { rightColumn } from "@/config/data/startMenuData";
+import logOffIcon from "@/public/icons/logOffIcon.png";
+import turnOffIcon from "@/public/icons/turnOffIcon.png";
+
+export default function StartMenu() {
+  return (
+    <>
+      <section className="flex place-items-center text-3xl font-arial font-bold">
+        <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
+        <p> user</p>
+      </section>
+
+      <section className="flex">
+        <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] w-[550px] fixed bottom-[578px] left-[-90px]"></div>
+
+        <div className="bg-white w-full h-[530px] pt-2">
+          {leftColumn.map((item, index) => (
+            <div key={index} >
+              <a className="items-center p-3 flex w-auto h-[55px] lg:text-2xl text-[20px] cursor-default hover:bg-winXpBlue group">
+                <Image src={item.icon} alt={item.name} width={40} height={40} className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)]" draggable="false" />
+                <div className="flex-col leading-[0.8] ml-2 ">
+                  <p className={`text-gray-700 group-hover:text-white ${item.bold ? 'font-bold' : ''}`}>{item.name}</p>
+                  {item.Description ? <p className="text-gray-600 group-hover:text-gray-200"> {item.Description} </p> : ''}
+                </div>
+              </a>
+              {item.divider ? <div className="bg-divider h-[1px] w-full my-2"></div> : ''}
+            </div>
+          ))}
+
+          <div className="w-full h-[121px] place-items-center flex flex-col">
+            <div className="bg-divider h-[1px] w-full mt-auto"></div>
+            <a className="text-center w-full text-gray-700 lg:text-2xl text-[20px] font-bold m-2 flex  cursor-default hover:bg-winXpBlue hover:text-white">
+              <div className="mx-auto flex place-items-center">
+                <p>All Programs</p>
+                <Image src={startMenuArrow} alt="All Programs" className="ml-1 lg:w-[40px] w-[30px] h-[40px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)]" draggable="false" />
+              </div>
+            </a>
+          </div>
+        </div >
+
+        <div className="bg-[rgb(205_220_255)] w-full h-[530px] border-l-[2px] border-[rgb(159_188_255)]">
+          {rightColumn.map((item, index) => (
+            <div key={index} >
+              <a className="items-center flex w-auto h-[45px] cursor-default hover:bg-winXpBlue group">
+                <Image src={item.icon} alt={item.name} width={35} height={35} className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)] ml-3" draggable="false" />
+                <div className="flex ml-2 place-items-center w-full">
+                  <p className={`text-[rgb(33_47_85)] leading-[0.8] group-hover:text-white lg:text-2xl text-[20px] ${item.bold ? "font-bold" : ""}`}>{item.name}</p>
+                  {item.name === "My Recent Documents" ? <p className="text-[rgb(33_47_85)] text-xl ml-auto mr-3 group-hover:text-white">►</p> : ''}
+                </div>
+              </a>
+              {item.divider ? <div className="bg-dividerBlue h-[1px] w-full my-2"></div> : ''}
+            </div>
+          ))}
+        </div>
+      </section >
+
+      <section className="flex place-items-center text-[22px] h-[53px] mr-5">
+        <button className="active:brightness-75 flex place-items-center ml-auto cursor-default">
+          <Image src={logOffIcon.src} alt='Log Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Log Off
+        </button>
+        <button className="active:brightness-75 flex place-items-center cursor-default">
+          <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Turn Off Computer
+        </button>
+      </section>
+      <div className="bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] w-[552px] rounded-b-sm fixed bottom-[-4px] left-[-80px]"></div>
+    </>
+  );
+}
