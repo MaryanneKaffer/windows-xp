@@ -17,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en" className={tahoma.variable}>
-      <head />
-      <title>Windows XP</title>
-      <link rel="icon" href={logoIcon.src} />
+      <head>
+        <title>Windows XP</title>
+        <link rel="icon" href={logoIcon.src} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className="justify-self-center bg-black lg:max-w-[1440px] lg:max-h-[900px] w-full h-full no-drag font-tahoma overflow-hidden">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main>{children}</main>
