@@ -66,7 +66,7 @@ export default function StartMenu() {
           <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Turn Off Computer
         </button>
       </section>
-      <div className="bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] w-[552px] fixed bottom-[-4px] left-[-80px]"></div>
+      <div className="bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]"></div>
     </>
   );
 }

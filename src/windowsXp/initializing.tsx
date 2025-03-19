@@ -25,7 +25,7 @@ export default function Initializing() {
   if (!showComponent) return <Startup />;
 
   return (
-    <div className="text-4xl text-gray bg-black cursor-none h-screen w-full">
+    <div className="text-4xl text-gray bg-black cursor-none h-screen w-full overflow-hidden">
       <h2 className={`mx-2 ${visible ? "" : "hidden"}`}>_</h2>
     </div>
   );

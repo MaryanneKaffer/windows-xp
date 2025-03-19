@@ -3,6 +3,7 @@ import tahoma from "../config/fonts/tahoma";
 import "@/styles/globals.css";
 import { Providers } from "./providers";
 import logoIcon from "@/public/logo/logoIcon.png";
+import Head from "next/head";
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -15,14 +16,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
+  return (  
     <html suppressHydrationWarning lang="en" className={tahoma.variable}>
-      <head>
+      <Head>    
         <title>Windows XP</title>
         <link rel="icon" href={logoIcon.src} />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      </head>
-      <body className="justify-self-center bg-black lg:max-w-[1440px] lg:max-h-[900px] max-w-[400px] w-full no-drag font-tahoma overflow-hidden">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      </Head>
+      <body className="justify-self-center bg-black lg:w-[1440px] lg:min-h-[900px] h-screen w-screen no-drag font-tahoma overflow-hidden">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main>{children}</main>
         </Providers>

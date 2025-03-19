@@ -33,7 +33,7 @@ export default function Startup() {
   return (
     <>
       {showStartUp && (
-        <section className="min-h-screen grid place-items-center grid-rows-[1fr_auto] cursor-none">
+        <section className="h-screen grid place-items-center grid-rows-[1fr_auto] cursor-none overflow-hidden">
           <div className="flex flex-col">
             <Image
               src={winXpLogo.src}
