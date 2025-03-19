@@ -57,7 +57,7 @@ export default function Startup() {
       )}
       {showWelcome && (
         <section className="cursor-none">
-          <div className="bg-blue-900 min-h-screen h-full flex relative">
+          <div className="bg-blue-900 min-h-screen flex relative">
             <div className="bg-blue-500 h-[75vh] w-full self-center flex items-center justify-center">
               <div className="h-[3px] flex lg:w-[1000px] w-[400px] fixed top-[12.5vh] lg:right-[580px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
               <p className="lg:text-7xl text-4xl font-arial font-bold ml-[20vh] italic drop-shadow-[4px_4px_1px_rgba(0,0,255,0.3)]">
