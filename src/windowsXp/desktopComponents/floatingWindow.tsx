@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import exitIcon from "@/public/icons/exitIcon.png";
 import minimizeIcon from "@/public/icons/minimizeIcon.png";
 import restoreIcon from "@/public/icons/restoreIcon.png";
+import NotepadComponent from "./windowComponents/NotepadComponent";
 
 interface FloatingWindowProps {
     name: string;
@@ -73,8 +74,8 @@ export default function FloatingWindow({ name, icon, onClose }: FloatingWindowPr
                 className={`${isActive ? "z-10" : "z-0"} !all-unset min-w-[700px] h-[600px] bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none !rounded-t-xl [&>button]:hidden !flex !flex-col !gap-0 absolute transition-transform duration-0`} >
 
                 <DialogHeader onMouseDown={handleMouseDown} className="!flex !flex-row place-items-center h-[45px] relative cursor-default">
-                    <Image src={icon} draggable={false} alt={name} width={32} height={32} className="mx-2" />
-                    <DialogTitle className="font-thin text-2xl !m-0 ">{name}</DialogTitle>
+                    <Image src={icon} draggable={false} alt={name} width={30} height={30} className="mx-2" />
+                    <DialogTitle className="font-arial text-lg !m-0 drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)]">{name}</DialogTitle>
                     <div className="flex gap-1 ml-auto">
                         <button type="button" className="!my-auto ">
                             <img draggable="false" src={minimizeIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
@@ -90,8 +91,9 @@ export default function FloatingWindow({ name, icon, onClose }: FloatingWindowPr
                     </div>
                     <div className="bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] w-full fixed top-[28px] left-[0px]"></div>
                 </DialogHeader>
-
-                <DialogDescription className="h-full bg-white"></DialogDescription>
+                <DialogDescription className="h-full bg-white">
+                    {name === "Notepad" && <NotepadComponent />}
+                </DialogDescription>
             </DialogContent>
         </Dialog>
     );
