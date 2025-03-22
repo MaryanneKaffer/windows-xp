@@ -71,7 +71,7 @@ export default function FloatingWindow({ name, icon, onClose }: FloatingWindowPr
     return (
         <Dialog open={true} onOpenChange={onClose} modal={false} >
             <DialogContent id="windowElement" ref={ref} forceMount style={{ transform: `translate(${position.x}px, ${position.y}px)` }} onInteractOutside={(e) => e.preventDefault()} onClick={() => isActive ? "" : setIsActive(!isActive)}
-                className={`${isActive ? "z-10" : "z-0"} !all-unset min-w-[700px] h-[600px] bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none !rounded-t-xl [&>button]:hidden !flex !flex-col !gap-0 absolute transition-transform duration-0`} >
+                className={`${isActive ? "z-10" : "z-0"} !all-unset lg:min-w-[700px] lg:h-[600px] w-full h-[70%] bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none !rounded-t-xl [&>button]:hidden !flex !flex-col !gap-0 absolute transition-transform duration-0`} >
 
                 <DialogHeader onMouseDown={handleMouseDown} className="!flex !flex-row place-items-center h-[45px] relative cursor-default">
                     <Image src={icon} draggable={false} alt={name} width={30} height={30} className="mx-2" />

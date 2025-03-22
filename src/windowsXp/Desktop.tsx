@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import TaskBar from "./desktopComponents/taskBar";
 import { desktopData } from "@/config/data/desktopData";
 import FloatingWindow from "./desktopComponents/floatingWindow";
-import { DesktopMenu } from "./desktopComponents/contextMenu";
+import { ContextMenu } from "./desktopComponents/contextMenu";
 import { useClickAway } from "react-use";
 
 interface WindowData {
@@ -16,6 +16,7 @@ export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<WindowData[]>([]);
   const [menuVisible, setMenuVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [item, setItem] = useState("");
   const refMenu = useRef(null);
   const refIcon = useRef(null);
 
@@ -24,10 +25,12 @@ export default function Desktop() {
       setOpenWindows((prev) => [...prev, { name, icon: icon.src }]);
     }
   };
-  const desktopMenu = (event: React.MouseEvent) => {
+  const Menu = (event: React.MouseEvent, name: string, index?: number) => {
     event.preventDefault();
     setPosition({ x: event.clientX, y: event.clientY });
     setMenuVisible(true);
+    setItem(name);
+    setActiveIndex(index!);
   };
 
   useClickAway(refMenu, () => setMenuVisible(false));
@@ -35,11 +38,11 @@ export default function Desktop() {
 
   return (
     <>
-      <section className="bg-desktop h-screen w-full overflow-hidden bg-cover relative p-5">
-        <div className="w-full h-full absolute bottom-0 right-0" onContextMenu={desktopMenu} ></div>
+      <section className="bg-desktop h-[100dvh] w-full overflow-hidden bg-cover relative p-5">
+        <div className="w-full h-full absolute bottom-0 right-0" onContextMenu={(e) => Menu(e, "Desktop")} ></div>
         <div className="flex flex-col">
           {desktopData.map((item, index) => (
-            <button ref={refIcon} key={index} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon)} draggable="true">
+            <button ref={refIcon} key={index} onContextMenu={(e) => Menu(e, "App", index)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon)} draggable="true">
               <Image src={item.icon} alt={item.name} draggable="false" className={`w-[50px] h-[50px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.3)] mt-auto mb-1 ${activeIndex === index ? "brightness-75 contrast-125 inset-0 opacity-60 " : ""}`} />
               <p className={`text-xl text-center w-[100px] mb-auto drop-shadow-[2px_3px_2px_rgba(0,0,0,0.7)] ${activeIndex === index ? "bg-winXpBlue" : ""}`}>{item.name}</p>
             </button>
@@ -48,11 +51,13 @@ export default function Desktop() {
         {openWindows.map((window, index) => (
           <FloatingWindow key={index} name={window.name} icon={window.icon} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} />
         ))}
-        <TaskBar />
+        <div onContextMenu={(e) => Menu(e, "Task Bar")}>
+          <TaskBar />
+        </div>
       </section>
       {menuVisible && (
         <div ref={refMenu}>
-          <DesktopMenu x={position.x} y={position.y} />
+          <ContextMenu x={position.x} y={position.y} item={item} />
         </div>
       )}
     </>
