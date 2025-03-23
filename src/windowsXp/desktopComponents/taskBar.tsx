@@ -39,7 +39,7 @@ export default function TaskBar() {
                 <PopoverContent
                     className="bg-window border-[2px] border-[#245DDA] rounded-b-none rounded-t-xl fixed !transition-none !duration-0 p-0 
                         lg:w-[550px] lg:h-[700px] lg:bottom-[-4px] lg:left-[-78px]  
-                        w-screen h-[700px] bottom-[-4px] left-[-30px]"
+                        w-screen h-[650px] bottom-[-4px] left-[-30px]"
                 >
                     <StartMenu />
                 </PopoverContent>

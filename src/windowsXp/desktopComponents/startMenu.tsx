@@ -15,9 +15,9 @@ export default function StartMenu() {
       </section>
 
       <section className="flex">
-        <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] w-[550px] fixed bottom-[578px] left-[-90px]"></div>
+        <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] w-[550px] fixed lg:left-[-95px] left-[-130px] "></div>
 
-        <div className="bg-white w-full h-[530px] pt-2">
+        <div className="bg-white w-full lg:h-[530px] h-[480px] pt-2">
           {leftColumn.map((item, index) => (
             <div key={index} >
               <a className="items-center p-3 flex w-auto h-[55px] lg:text-2xl text-[20px] cursor-default hover:bg-winXpBlue group">
@@ -32,7 +32,7 @@ export default function StartMenu() {
           ))}
 
           <div className="w-full h-[121px] place-items-center flex flex-col">
-            <div className="bg-divider h-[1px] w-full mt-auto"></div>
+            <div className="bg-divider h-[1px] w-full lg:mt-auto mt-3"></div>
             <a className="text-center w-full text-gray-700 lg:text-2xl text-[20px] font-bold m-2 flex  cursor-default hover:bg-winXpBlue hover:text-white">
               <div className="mx-auto flex place-items-center">
                 <p>All Programs</p>
@@ -42,11 +42,11 @@ export default function StartMenu() {
           </div>
         </div >
 
-        <div className="bg-[rgb(205_220_255)] w-full h-[530px] border-l-[2px] border-[rgb(159_188_255)]">
+        <div className="bg-[rgb(205_220_255)] w-full lg:h-[530px] h-[480px] border-l-[2px] border-[rgb(159_188_255)]">
           {rightColumn.map((item, index) => (
             <div key={index} >
-              <a className="items-center flex w-auto h-[45px] cursor-default hover:bg-winXpBlue group">
-                <Image src={item.icon} alt={item.name} width={35} height={35} className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)] ml-3" draggable="false" />
+              <a className="items-center flex w-auto lg:h-[45px] h-[40px] cursor-default hover:bg-winXpBlue group">
+                <Image src={item.icon} alt={item.name} width={35} height={35} className="lg:size-[35px] size-[32px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)] ml-3" draggable="false" />
                 <div className="flex ml-2 place-items-center w-full">
                   <p className={`text-[rgb(33_47_85)] leading-[0.8] group-hover:text-white lg:text-2xl text-[20px] ${item.bold ? "font-bold" : ""}`}>{item.name}</p>
                   {item.name === "My Recent Documents" ? <p className="text-[rgb(33_47_85)] text-xl ml-auto mr-3 group-hover:text-white">►</p> : ''}
