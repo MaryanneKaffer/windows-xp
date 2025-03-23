@@ -10,8 +10,8 @@ export function ContextMenu(position: { x: number, y: number, item: string }) {
     return (
         <div className="bg-white border-[1px] border-gray-400 text-black w-auto fixed" style={{ left: position.x, top: position.y - menuHeight }}>
             {menuData.map((item, index) => (
-                <div className="relative" >
-                    <button key={index} disabled={item.disabled}
+                <div key={index} className="relative" >
+                    <button disabled={item.disabled}
                         className={`w-full ${item.disabled ? "text-gray-500" : ""} flex cursor-default px-5 ${item.disabled ? "" : "group hover:bg-winXpBlue"} ${position.item === "Task Bar" ? "bottom-[2000px]" : ""}`} onMouseEnter={() => setActiveIndex(item.functionList ? index : null)} onMouseLeave={() => setActiveIndex(null)}>
                         <p className={`group-hover:text-white text-lg text-left ${item.bold ? "font-bold" : ""}`}>{item.name}</p>
                         {item.functionList ? <p className="group-hover:text-white text-lg text-left ml-auto">►</p> : ""}

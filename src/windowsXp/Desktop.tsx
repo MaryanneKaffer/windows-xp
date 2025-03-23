@@ -17,14 +17,14 @@ export default function Desktop() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [item, setItem] = useState("");
-  const refMenu = useRef(null);
-  const refIcon = useRef(null);
+  const ref = useRef(null);
 
   const handleDoubleClick = (name: string, icon: StaticImageData) => {
     if (!openWindows.some((win) => win.name === name)) {
       setOpenWindows((prev) => [...prev, { name, icon: icon.src }]);
     }
-  };
+  }
+
   const Menu = (event: React.MouseEvent, name: string, index?: number) => {
     event.preventDefault();
     setPosition({ x: event.clientX, y: event.clientY });
@@ -33,8 +33,7 @@ export default function Desktop() {
     setActiveIndex(index!);
   };
 
-  useClickAway(refMenu, () => setMenuVisible(false));
-  useClickAway(refIcon, () => setActiveIndex(null));
+  useClickAway(ref, () => { setMenuVisible(false), setActiveIndex(null) });
 
   return (
     <>
@@ -42,7 +41,7 @@ export default function Desktop() {
         <div className="w-full h-full absolute bottom-0 right-0" onContextMenu={(e) => Menu(e, "Desktop")} ></div>
         <div className="flex flex-col">
           {desktopData.map((item, index) => (
-            <button ref={refIcon} key={index} onContextMenu={(e) => Menu(e, "App", index)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon)} draggable="true">
+            <button ref={ref} key={index} onContextMenu={(e) => Menu(e, "App", index)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon)} draggable="true">
               <Image src={item.icon} alt={item.name} draggable="false" className={`w-[50px] h-[50px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.3)] mt-auto mb-1 ${activeIndex === index ? "brightness-75 contrast-125 inset-0 opacity-60 " : ""}`} />
               <p className={`text-xl text-center w-[100px] mb-auto drop-shadow-[2px_3px_2px_rgba(0,0,0,0.7)] ${activeIndex === index ? "bg-winXpBlue" : ""}`}>{item.name}</p>
             </button>
@@ -56,7 +55,7 @@ export default function Desktop() {
         </div>
       </section>
       {menuVisible && (
-        <div ref={refMenu}>
+        <div ref={ref}>
           <ContextMenu x={position.x} y={position.y} item={item} />
         </div>
       )}

@@ -4,16 +4,16 @@ import Startup from "./startup";
 
 export default function Initializing() {
   const [visible, setVisible] = useState(true);
-  const [showComponent, setShowComponent] = useState(true);
+  const [showStartup, setShowStartup] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setVisible((prev: any) => !prev);
+      setVisible((prev) => !prev);
     }, 200);
 
     const timeout = setTimeout(() => {
       clearInterval(interval);
-      setShowComponent(false);
+      setShowStartup(false);
     }, 3000);
 
     return () => {
@@ -22,11 +22,11 @@ export default function Initializing() {
     };
   }, []);
 
-  if (!showComponent) return <Startup />;
+  if (!showStartup) return <Startup />;
 
   return (
-    <div className="text-4xl text-gray bg-black cursor-none">
-      <h2 className={`mx-2 ${visible ? "" : "hidden"}`}>_</h2>
+    <div className="text-4xl text-gray-400 cursor-none">
+      <p className={`mx-2 ${visible ? "" : "hidden"}`}>_</p>
     </div>
   );
 }

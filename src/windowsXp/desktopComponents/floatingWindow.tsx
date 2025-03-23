@@ -1,7 +1,8 @@
 import Image from "next/image";
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useClickAway } from "react-use";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import { useDraggable } from "@heroui/react";
 import exitIcon from "@/public/icons/exitIcon.png";
 import minimizeIcon from "@/public/icons/minimizeIcon.png";
 import restoreIcon from "@/public/icons/restoreIcon.png";
@@ -14,73 +15,19 @@ interface FloatingWindowProps {
 }
 
 export default function FloatingWindow({ name, icon, onClose }: FloatingWindowProps) {
-    const [position, setPosition] = window.innerWidth >= 1024 ? useState({ x: Math.random() * (200 - 800) + 800, y: Math.random() * (-950 - -700) + -700 }) : useState({ x: 0, y: 0 });
-    const isDragging = useRef(false);
-    const offset = useRef({ x: 0, y: 0 });
-    const animationFrame = useRef<number | null>(null);
+    const [position, setPosition] = window.innerWidth >= 1024 ? useState({ x: Math.random() * (0 - 600) + 600, y: Math.random() * (-200 - -500) - 500 }) : useState({ x: 0, y: 0 });
     const [isActive, setIsActive] = useState(false);
-    const windowRef = useRef<HTMLDivElement>(null);
     const [isMaximized, setIsMaximized] = useState(false);
-    const ref = useRef(null);
-
-    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-        if ((e.target as HTMLElement).closest("button")) {
-            return;
-        }
-        isDragging.current = true;
-        offset.current = {
-            x: e.clientX - position.x,
-            y: e.clientY - position.y,
-        };
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-        if (!isDragging.current) return;
-
-        if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-        animationFrame.current = requestAnimationFrame(() => {
-            setPosition({
-                x: e.clientX - offset.current.x,
-                y: e.clientY - offset.current.y,
-            });
-        });
-    };
-
-    const handleMouseUp = () => {
-        isDragging.current = false;
-        if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    };
-
-    useEffect(() => {
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-        return () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
-            if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-        };
-    }, []);
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (windowRef.current && !windowRef.current.contains(event.target as Node)) {
-                setIsActive(false);
-            }
-        };
-
-        document.addEventListener("click", handleClickOutside);
-        return () => document.removeEventListener("click", handleClickOutside);
-    }, []);
+    const targetRef = React.useRef(null);
+    const { moveProps } = useDraggable({ targetRef, canOverflow: true });
 
     const handleMaximize = () => {
         setIsMaximized(!isMaximized);
     };
 
-    useClickAway(ref, () => setIsActive(false));
-
     return (
-        <Dialog open={true} onOpenChange={onClose} modal={false} >
-            <DialogContent id="windowElement" ref={ref} forceMount onInteractOutside={(e) => e.preventDefault()} onClick={() => isActive ? "" : setIsActive(!isActive)}
-                className={`${isActive ? "z-10" : "z-0"} max-w-[screen] !all-unset bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none ${!isMaximized ? "!rounded-t-xl" : "rounded-none"} [&>button]:hidden !flex !flex-col !gap-0 transition-transform duration-0`}
+        <div ref={targetRef}>
+            <div id="windowElement" className={`max-w-[screen] !all-unset bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none ${!isMaximized ? "!rounded-t-xl" : "rounded-none"} [&>button]:hidden !flex !flex-col !gap-0 transition-transform duration-0`}
                 style={window.innerWidth >= 1024 ? {
                     transform: isMaximized ? "none" : `translate(${position.x}px, ${position.y}px)`,
                     width: isMaximized ? "1440px" : "50vw",
@@ -95,10 +42,9 @@ export default function FloatingWindow({ name, icon, onClose }: FloatingWindowPr
                     left: isMaximized ? "" : "50%",
                     position: "absolute"
                 }}>
-
-                <DialogHeader onMouseDown={handleMouseDown} className="!flex !flex-row place-items-center h-[45px] relative cursor-default">
+                <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !cursor-default !p-0">
                     <Image src={icon} draggable={false} alt={name} width={30} height={30} className="mx-2" />
-                    <DialogTitle className="font-arial text-lg !m-0 drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)]">{name}</DialogTitle>
+                    <p className="font-arial text-lg !m-0 drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)]">{name}</p>
                     <div className="flex gap-1 ml-auto">
                         <button type="button" className="!my-auto ">
                             <img draggable="false" src={minimizeIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
@@ -106,18 +52,16 @@ export default function FloatingWindow({ name, icon, onClose }: FloatingWindowPr
                         <button onClick={handleMaximize} type="button" className="!my-auto lg:block hidden">
                             <img draggable="false" src={restoreIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
                         </button>
-                        <DialogClose asChild>
-                            <button type="button" className="!my-auto mr-2">
-                                <img draggable="false" src={exitIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
-                            </button>
-                        </DialogClose>
+                        <button type="button" className="!my-auto mr-2 " onClick={onClose}>
+                            <img draggable="false" src={exitIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                        </button>
                     </div>
-                    <div className={`bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] ${!isMaximized ? "w-full" : ""} fixed top-[28px] left-[0px]`}></div>
-                </DialogHeader>
+                    <div className={`bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] ${!isMaximized ? "w-full" : ""} absolute top-[34px] left-[0px]`}></div>
+                </div>
                 <div className="h-full bg-white">
                     {name === "Notepad" && <NotepadComponent />}
                 </div>
-            </DialogContent>
-        </Dialog >
+            </div>
+        </div >
     );
 }
