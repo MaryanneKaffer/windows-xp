@@ -1,8 +1,13 @@
-export const appMenuData = [
+export const appMenuData = (setOpenWindows: (arg0: (prev: any) => any[]) => any, window: { name: any; icon: any; }) => [
     {
         name: "Open",
         bold: true,
         disabled: false,
+        function: () =>
+            setOpenWindows((prev) => [
+                ...prev,
+                { name: window.name, icon: window.icon }
+            ]),
     },
     {
         name: "Run as...",

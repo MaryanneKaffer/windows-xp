@@ -3,7 +3,7 @@ export const taskBarMenuData = [
         name: "View",
         functionList: [{ name: "Large Icons" }, { name: "Small Icons" }],
         bold: false,
-        function: ""
+        function: () => { },
     },
     {
         name: "Open Folder",

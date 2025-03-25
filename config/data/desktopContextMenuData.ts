@@ -3,7 +3,7 @@ export const desktopMenuData = [
         name: "View",
         functionList: [{ name: "Thumbnails" }, { name: "Tiles" }, { name: "● Icons" }, { name: "List" }, { name: "Details" }],
         bold: false,
-        function: "",
+        function: () => { },
     },
     {
         name: "Sort By",
