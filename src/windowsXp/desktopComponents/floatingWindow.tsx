@@ -16,9 +16,11 @@ interface FloatingWindowProps {
     fixedSize?: boolean;
     width: string;
     height: string;
+    mobileWidth: string;
+    mobileHeight: string;
 }
 
-export default function FloatingWindow({ name, icon, onClose, fixedSize, width, height }: FloatingWindowProps) {
+export default function FloatingWindow({ name, icon, onClose, fixedSize, width, height, mobileHeight, mobileWidth }: FloatingWindowProps) {
     const [position] = window.innerWidth >= 1024 ? useState({ x: Math.random() * (0 - -600) + -700, y: Math.random() * (-200 - -400) - 400 }) : useState({ x: 0, y: 0 });
     const [isMaximized, setIsMaximized] = useState(false);
     const targetRef = React.useRef(null);
@@ -32,11 +34,14 @@ export default function FloatingWindow({ name, icon, onClose, fixedSize, width, 
         <div >
             <div ref={!isMaximized ? targetRef : undefined} id="windowElement" className={`max-w-[screen] !all-unset bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
             ${isMaximized ? "lg:w-[1440px] lg:h-[95vh] lg:absolute w-[100dvw] h-[93.2dvh] top-0 left-0 absolute rounded-none" : `lg:fixed w-[80dvw] h-[50dvh] top-[46.5%] left-[50%] absolute rounded-t-xl`}`}
-                style={!isMaximized ? {
+                style={!isMaximized && screen.width > 1024 ? {
                     width: isMaximized ? "1440px" : width,
                     height: isMaximized ? "95vh" : height,
                     transform: `translate(${position.x}px, ${position.y}px)`
-                } : {}}
+                } : {
+                    width: isMaximized ? "100vw" : mobileWidth,
+                    height: isMaximized ? "93.2dvh" : mobileHeight,
+                }}
             >
                 <div {...moveProps} onDoubleClick={handleMaximize} className="!flex !flex-row place-items-center h-[45px] relative !cursor-default !p-0">
                     <div className="mx-2 flex">
@@ -62,7 +67,7 @@ export default function FloatingWindow({ name, icon, onClose, fixedSize, width, 
                             <img draggable="false" src={exitIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
                         </button>
                     </div>
-                    <div className={`bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] ${!isMaximized ? "w-full" : ""} absolute top-[34px] left-[0px]`}></div>
+                    <div className={`bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] ${!isMaximized ? "w-full" : ""} absolute top-[32px] left-[0px]`}></div>
                 </div>
                 <div className="h-full bg-white">
                     {name === "Notepad" && <NotepadComponent />}

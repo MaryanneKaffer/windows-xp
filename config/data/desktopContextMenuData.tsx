@@ -25,7 +25,7 @@ export const desktopMenuData = (setOpenWindows: (arg0: (prev: any) => any) => vo
         name: "Properties",
         function: () => setOpenWindows((prev) => [
             ...prev,
-            { name: "Display Properties", icon: null, fixedSize: true, width: "500px", height: "530px" }
+            { name: "Display Properties", icon: null, fixedSize: true, width: "500px", height: "530px", mobileWidth: "80dvw", mobileHeight: "63dvh" }
         ]),
     },
 ]

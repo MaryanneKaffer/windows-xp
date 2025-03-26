@@ -9,7 +9,15 @@ import defaultIcon from "@/public/icons/supportIcon.png";
 
 export default function Desktop() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [openWindows, setOpenWindows] = useState<{ name: string; icon: string, fixedSize?: boolean, width?: string, height?: string; }[]>([]);
+  const [openWindows, setOpenWindows] = useState<{
+    name: string;
+    icon: string;
+    fixedSize?: boolean;
+    width?: string;
+    height?: string;
+    mobileWidth?: string;
+    mobileHeight?: string;
+  }[]>([]);
   const [menuVisible, setMenuVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [item, setItem] = useState("");
@@ -18,10 +26,9 @@ export default function Desktop() {
   const [icon, setIcon] = useState<StaticImageData | null>(null);
   const [name, setName] = useState("");
 
-  const handleDoubleClick = (name: string, icon: StaticImageData, fixedSize?: boolean, width?: string, height?: string) => {
+  const handleDoubleClick = (name: string, icon: StaticImageData, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
-      setOpenWindows((prev) => [...prev, { name, icon: icon.src, fixedSize, width, height }]);
-    }
+      setOpenWindows((prev) => [...prev, { name, icon: icon.src, fixedSize, width, height, mobileHeight, mobileWidth }]);    }
   }
 
   const Menu = (event: React.MouseEvent, name: string, index?: number, appName?: string, appIcon?: StaticImageData,) => {
@@ -50,7 +57,7 @@ export default function Desktop() {
           ))}
         </div>
         {openWindows.map((window, index,) => (
-          <FloatingWindow key={index} name={window.name} icon={window.icon} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} />
+          <FloatingWindow key={index} name={window.name} icon={window.icon} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? ""} mobileHeight={window.mobileHeight ?? ""} />
         ))}
         <div onContextMenu={(e) => Menu(e, "Task Bar")}>
           <TaskBar />
