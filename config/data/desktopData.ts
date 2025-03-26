@@ -4,22 +4,37 @@ import notepadIcon from "@/public/icons/notepadIcon.png";
 export const desktopData = [
     {
         name: "Recycle Bin",
-        icon: recycleBinIcon
+        icon: recycleBinIcon,
+        fixedSize: false,
+        width: "50vw",
+        height: "600px",
     },
     {
         name: "New Folder",
-        icon: folderClosedIcon
+        icon: folderClosedIcon,
+        fixedSize: false,
+        width: "50vw",
+        height: "600px",
     },
     {
         name: "New Folder(1)",
-        icon: folderClosedIcon
+        icon: folderClosedIcon,
+        fixedSize: false,
+        width: "50vw",
+        height: "600px",
     },
     {
         name: "New Folder(2)",
-        icon: folderClosedIcon
+        icon: folderClosedIcon,
+        fixedSize: false,
+        width: "50vw",
+        height: "600px",
     },
     {
         name: "Notepad",
-        icon: notepadIcon
+        icon: notepadIcon,
+        fixedSize: false,
+        width: "20vw",
+        height: "50vh",
     },
 ]

@@ -1,9 +1,9 @@
-export const desktopMenuData = [
+
+export const desktopMenuData = (setOpenWindows: (arg0: (prev: any) => any) => void) => [
     {
         name: "View",
         functionList: [{ name: "Thumbnails" }, { name: "Tiles" }, { name: "● Icons" }, { name: "List" }, { name: "Details" }],
         bold: false,
-        function: () => { },
     },
     {
         name: "Sort By",
@@ -22,6 +22,10 @@ export const desktopMenuData = [
         divider: true
     },
     {
-        name: "Personalize",
+        name: "Properties",
+        function: () => setOpenWindows((prev) => [
+            ...prev,
+            { name: "Display Properties", icon: null, fixedSize: true, width: "500px", height: "530px" }
+        ]),
     },
 ]
