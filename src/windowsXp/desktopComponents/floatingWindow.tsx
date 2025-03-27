@@ -71,7 +71,7 @@ export default function FloatingWindow({ name, icon, onClose, fixedSize, width, 
                 </div>
                 <div className="h-full bg-white">
                     {name === "Notepad" && <NotepadComponent />}
-                    {name === "Display Properties" && <DesktopPropertiesComponent />}
+                    {name === "Display Properties" && <DesktopPropertiesComponent onClose={onClose} />}
                 </div>
             </div>
         </div >

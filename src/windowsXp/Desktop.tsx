@@ -6,6 +6,7 @@ import FloatingWindow from "./desktopComponents/floatingWindow";
 import { ContextMenu } from "./desktopComponents/contextMenu";
 import { useClickAway } from "react-use";
 import defaultIcon from "@/public/icons/supportIcon.png";
+import { currentWallpaper } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 
 export default function Desktop() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -28,7 +29,8 @@ export default function Desktop() {
 
   const handleDoubleClick = (name: string, icon: StaticImageData, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
-      setOpenWindows((prev) => [...prev, { name, icon: icon.src, fixedSize, width, height, mobileHeight, mobileWidth }]);    }
+      setOpenWindows((prev) => [...prev, { name, icon: icon.src, fixedSize, width, height, mobileHeight, mobileWidth }]);
+    }
   }
 
   const Menu = (event: React.MouseEvent, name: string, index?: number, appName?: string, appIcon?: StaticImageData,) => {
@@ -46,8 +48,8 @@ export default function Desktop() {
 
   return (
     <>
-      <section className="bg-desktop h-[100dvh] w-full overflow-hidden bg-cover relative p-5">
-        <div className="w-full h-full absolute bottom-0 right-0" onContextMenu={(e) => Menu(e, "Desktop")} ></div>
+      <section className="h-[100dvh] w-full overflow-hidden bg-cover relative p-5">
+        <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => Menu(e, "Desktop")} />
         <div className="flex flex-col">
           {desktopData.map((item, index) => (
             <button ref={refApp} key={index} onContextMenu={(e) => Menu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon, item.fixedSize, item.width, item.height)} draggable="true">
