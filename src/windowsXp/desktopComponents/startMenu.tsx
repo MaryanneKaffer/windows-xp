@@ -5,6 +5,7 @@ import startMenuArrow from "@/public/icons/startMenuArrow.png";
 import { rightColumn } from "@/config/data/startMenuData";
 import logOffIcon from "@/public/icons/logOffIcon.png";
 import turnOffIcon from "@/public/icons/turnOffIcon.png";
+import { currentTheme } from "./windowComponents/desktopPropertiesComponent";
 
 export default function StartMenu() {
   return (
@@ -66,7 +67,7 @@ export default function StartMenu() {
           <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Turn Off Computer
         </button>
       </section>
-      <div className="bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]"></div>
+      <div className={`bg-gradient-to-t ${currentTheme.shadow1} h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]`}></div>
     </>
   );
 }

@@ -8,6 +8,7 @@ import restoreIcon from "@/public/icons/restoreIcon.png";
 import NotepadComponent from "./windowComponents/NotepadComponent";
 import questionIcon from "@/public/icons/questionIcon.png";
 import DesktopPropertiesComponent from "./windowComponents/desktopPropertiesComponent";
+import { currentTheme } from "./windowComponents/desktopPropertiesComponent";
 
 interface FloatingWindowProps {
     name: string;
@@ -32,7 +33,7 @@ export default function FloatingWindow({ name, icon, onClose, fixedSize, width, 
 
     return (
         <div >
-            <div ref={!isMaximized ? targetRef : undefined} id="windowElement" className={`max-w-[screen] !all-unset bg-window p-0 border-x-3 border-b-3 border-winXpBlue !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
+            <div ref={!isMaximized ? targetRef : undefined} id="windowElement" className={`max-w-[screen] !all-unset ${currentTheme.window} p-0 border-x-3 border-b-3 ${currentTheme.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
             ${isMaximized ? "lg:w-[1440px] lg:h-[95vh] lg:absolute w-[100dvw] h-[93.2dvh] top-0 left-0 absolute rounded-none" : `lg:fixed w-[80dvw] h-[50dvh] top-[46.5%] left-[50%] absolute rounded-t-xl`}`}
                 style={!isMaximized && screen.width > 1024 ? {
                     width: isMaximized ? "1440px" : width,
@@ -67,7 +68,7 @@ export default function FloatingWindow({ name, icon, onClose, fixedSize, width, 
                             <img draggable="false" src={exitIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
                         </button>
                     </div>
-                    <div className={`bg-gradient-to-t from-[rgb(21_55_128)] to-transparent h-[10px] ${!isMaximized ? "w-full" : ""} absolute top-[32px] left-[0px]`}></div>
+                    <div className={`bg-gradient-to-t ${currentTheme.shadow1} h-[10px] ${!isMaximized ? "w-full" : ""} absolute top-[32px] left-[0px]`}></div>
                 </div>
                 <div className="h-full bg-white">
                     {name === "Notepad" && <NotepadComponent />}

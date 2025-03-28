@@ -4,27 +4,47 @@ import { propertiesData } from "@/config/data/windowData/desktopPropertiesData";
 import zune from "@/public/themes/zune.png";
 import windowsXp from "@/public/themes/windowsXp.png";
 import windowsClassic from "@/public/themes/windowsClassic.png";
-import { ThemesData } from "@/config/data/windowData/displayPropertiesData/themesData";
 import DesktopDisplayComponent from "./displayPropertiesComponents/desktopDisplayComponent";
 import { Wallpapers } from "@/config/data/windowData/displayPropertiesData/wallpapersData";
+import { ThemesDisplayComponent } from "./displayPropertiesComponents/themesDisplayComponents";
+import { Themes } from "@/config/data/windowData/displayPropertiesData/themesData";
+
+interface Theme {
+    name: string;
+    taskbar?: string;
+    startbutton?: string;
+    window?: string;
+    systemtray?: string;
+    border?: string;
+    startmenu?: string;
+    sample?: string;
+    disabled?: boolean;
+    shadow1?: string;
+    shadow2?: string;
+}
 
 export let currentWallpaper: string = Wallpapers[3].wallpaper;
+export let currentTheme: Theme = Themes[0];
 
 export default function DesktopPropertiesComponent({ onClose }: { onClose: () => void }) {
     const [hoveringIndex, setHoveringIndex] = useState<number | null>(null);
     const [activeIndex, setActiveIndex] = useState<[number, string] | null>([0, "Themes"]);
-    const [selectedTheme, setSelectedTheme] = useState<string>(ThemesData[0]?.name || "");
+    const [selectedTheme, setSelectedTheme] = useState<Theme>(currentTheme.name === Themes[0].name ? Themes[0] : Themes[1]);
     const [selectedWallpaper, setSelectedWallpaper] = useState("");
 
     const Apply = () => {
         if (selectedWallpaper) {
             currentWallpaper = selectedWallpaper;
             setSelectedWallpaper("");
-        } else return;
+        }
+        if (selectedTheme) {
+            currentTheme = selectedTheme;
+            setSelectedTheme(selectedTheme);
+        }
     };
 
     const isAbleToApply = () => {
-        if (selectedWallpaper !== "" && selectedWallpaper !== currentWallpaper) return true;
+        if (selectedWallpaper && selectedWallpaper !== currentWallpaper || selectedTheme && selectedTheme.name !== currentTheme.name) return true;
     };
 
     return (
@@ -39,28 +59,12 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
                     </div>
                 ))}
             </div>
-            {activeIndex?.[1] === "Themes" &&
-                <div className="w-full lg:h-[85%] h-[305px] border-gray-400 border-[2px] rounded-md rounded-t-none text-black px-5 py-3 ">
-                    <p className="lg:leading-[20px] leading-[13px]">A theme is a background plus a set of sounds, icons, and other elements to help you personalize your computer with one click.</p>
-                    <p className="lg:mt-3 mt-1">Theme:</p>
-                    <div className="place-items-center flex gap-2">
-                        <select value={selectedTheme} onChange={(e) => setSelectedTheme(e.target.value)} className="w-[50%] bg-white h-[25px]">
-                            {ThemesData.map((theme, index) => (
-                                <option key={index} disabled={theme.disabled}>{theme.name}</option>
-                            ))}
-                        </select>
-                        <button className="w-[25%] cursor-default h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue">Save as...</button>
-                        <button disabled className="w-[25%] h-[28px] border-gray-500 border-2 rounded-md leading-none opacity-40">Delete</button>
-                    </div>
-                    <p className="lg:mt-2 mt-1">Sample:</p>
-                    <Image src={selectedTheme === "Windows Classic" ? windowsClassic.src : selectedTheme === "Zune" ? zune.src : windowsXp.src} alt="Theme" width={500} height={0} className="mt-1 lg:h-[220px]" />
-                </div>}
-
+            {activeIndex?.[1] === "Themes" && <ThemesDisplayComponent selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme} currentTheme={currentTheme} />}
             {activeIndex?.[1] === "Desktop" && <DesktopDisplayComponent selectedWallpaper={selectedWallpaper} setSelectedWallpaper={setSelectedWallpaper} currentWallpaper={currentWallpaper} />}
 
             <div className="text-black ml-auto flex gap-2 mx-auto h-[39px] lg:h-[53px] place-items-center">
                 <button onClick={onClose} className="cursor-default ml-auto w-[23%] h-[28px] border-winXpBlue border-2 rounded-md leading-none active:border-gray-500">OK</button>
-                <button className="cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue">Cancel</button>
+                <button disabled={!isAbleToApply()} onClick={() => setSelectedWallpaper("")} className={`cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue ${!isAbleToApply() ? "opacity-50" : ""}`}>Cancel</button>
                 <button disabled={!isAbleToApply()} onClick={() => Apply()} className={`cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue ${!isAbleToApply() ? "opacity-50" : ""
                     }`}>Apply
                 </button>

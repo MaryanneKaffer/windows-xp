@@ -15,11 +15,28 @@ const config = {
 				startUp1: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 30%, rgb(29, 72, 165) 70%)',
 				startUp2: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 40%, rgb(29, 72, 165) 60%)',
 				startUp3: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 45%, rgb(29, 72, 165) 55%)',
-				desktop: "url('/desktopImage/bliss.jpg')",
-				taskBar: 'linear-gradient(to bottom,rgb(108, 152, 255) 0%, #245DDA 18%, #245DDA 90%, rgb(21, 55, 128) 99%)',
-				startButton: 'linear-gradient(to bottom, rgb(74, 201, 84) 0%, rgb(31, 184, 64) 18%, rgb(35, 128, 26) 90%)',
-				systemTray: 'linear-gradient(to bottom, rgb(108, 189, 255) 0%,rgb(45, 153, 255) 18%, rgb(45, 153, 255) 90%, rgb(27, 93, 155) 99%)',
-				window: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
+
+				//Windows XP Theme
+				winXpTaskBar: 'linear-gradient(to bottom,rgb(108, 152, 255) 0%, #245DDA 18%, #245DDA 90%, rgb(21, 55, 128) 99%)',
+				winXpStartButton: 'linear-gradient(to bottom, rgb(74, 201, 84) 0%, rgb(31, 184, 64) 18%, rgb(35, 128, 26) 90%)',
+				winXpSystemTray: 'linear-gradient(to bottom, rgb(108, 189, 255) 0%,rgb(45, 153, 255) 18%, rgb(45, 153, 255) 90%, rgb(27, 93, 155) 99%)',
+				winXpWindow: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
+				winXpStartmenu: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
+
+				//Zune Theme
+				zuneTaskBar: 'linear-gradient(to bottom,rgb(75, 75, 75) 0%,rgb(75, 75, 75) 45%, rgb(53, 53, 53) 50%)',
+				zuneStartButton: 'linear-gradient(to bottom, rgb(255, 121, 59) 0%, rgb(114, 37, 1) 50%,rgb(110, 36, 1) 55%, rgb(136, 76, 48) 99%)',
+				zuneSystemTray: 'linear-gradient(to bottom,rgb(56, 56, 56) 0%,rgb(75, 75, 75) 45%, rgb(54, 54, 54) 45%, rgb(26, 26, 26) 55%)',
+				zuneWindow: 'linear-gradient(to bottom,rgb(75, 75, 75) 3.5%,rgb(0, 0, 0) 4.5%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
+				zuneStartmenu: 'linear-gradient(to bottom,rgb(75, 75, 75) 8%,rgb(0, 0, 0) 9%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
+
+				//Lollypop Theme
+				lollypopTaskBar: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%,rgb(241, 86, 255)18%, rgb(241, 86, 255) 90%, rgb(101, 46, 105) 99%)',
+				lollypopStartButton: 'linear-gradient(to bottom, rgb(243, 113, 255) 0%, rgb(148, 0, 161) 50%,rgb(148, 0, 161) 60%, rgb(168, 91, 175) 99%)',
+				lollypopSystemTray: 'linear-gradient(to bottom,rgb(252, 219, 255) 0%,rgb(247, 154, 255) 18%, rgb(247, 154, 255) 90%, rgb(241, 85, 255) 99%)',
+				lollypopWindow: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%, rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
+				lollypopStartmenu: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%,rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
+
 				divider: 'linear-gradient(to right, transparent, rgba(182, 182, 182) 50%, transparent)',
 				dividerBlue: 'linear-gradient(to right, transparent, rgb(27, 93, 155, 0.4) 50%, transparent)',
 			},
