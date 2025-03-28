@@ -17,8 +17,14 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
     const [selectedWallpaper, setSelectedWallpaper] = useState("");
 
     const Apply = () => {
-        currentWallpaper = selectedWallpaper;
-        setSelectedWallpaper("");
+        if (selectedWallpaper) {
+            currentWallpaper = selectedWallpaper;
+            setSelectedWallpaper("");
+        } else return;
+    };
+
+    const isAbleToApply = () => {
+        if (selectedWallpaper !== "" && selectedWallpaper !== currentWallpaper) return true;
     };
 
     return (
@@ -55,7 +61,9 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
             <div className="text-black ml-auto flex gap-2 mx-auto h-[39px] lg:h-[53px] place-items-center">
                 <button onClick={onClose} className="cursor-default ml-auto w-[23%] h-[28px] border-winXpBlue border-2 rounded-md leading-none active:border-gray-500">OK</button>
                 <button className="cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue">Cancel</button>
-                <button onClick={() => Apply()} className="cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue">Apply</button>
+                <button disabled={!isAbleToApply()} onClick={() => Apply()} className={`cursor-default w-[23%] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue ${!isAbleToApply() ? "opacity-50" : ""
+                    }`}>Apply
+                </button>
             </div>
         </div>
     )
