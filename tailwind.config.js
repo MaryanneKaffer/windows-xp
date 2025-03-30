@@ -16,26 +16,41 @@ const config = {
 				startUp2: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 40%, rgb(29, 72, 165) 60%)',
 				startUp3: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 45%, rgb(29, 72, 165) 55%)',
 
-				//Windows XP Theme
+				//Windows XP Appearance
 				winXpTaskBar: 'linear-gradient(to bottom,rgb(108, 152, 255) 0%, #245DDA 18%, #245DDA 90%, rgb(21, 55, 128) 99%)',
 				winXpStartButton: 'linear-gradient(to bottom, rgb(74, 201, 84) 0%, rgb(31, 184, 64) 18%, rgb(35, 128, 26) 90%)',
 				winXpSystemTray: 'linear-gradient(to bottom, rgb(108, 189, 255) 0%,rgb(45, 153, 255) 18%, rgb(45, 153, 255) 90%, rgb(27, 93, 155) 99%)',
 				winXpWindow: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
 				winXpStartmenu: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
 
-				//Zune Theme
+				//Zune Appearance
 				zuneTaskBar: 'linear-gradient(to bottom,rgb(75, 75, 75) 0%,rgb(75, 75, 75) 45%, rgb(53, 53, 53) 50%)',
-				zuneStartButton: 'linear-gradient(to bottom, rgb(255, 121, 59) 0%, rgb(114, 37, 1) 50%,rgb(110, 36, 1) 55%, rgb(136, 76, 48) 99%)',
+				zuneStartButton: 'linear-gradient(to bottom, rgb(255, 107, 39) 0%, rgb(255, 159, 114) 10%, rgb(255, 197, 170) 15%,rgb(255, 121, 59) 40%, rgb(110, 36, 1) 80%, rgb(110, 36, 1)95%, rgb(197, 89, 40)99%)',
 				zuneSystemTray: 'linear-gradient(to bottom,rgb(56, 56, 56) 0%,rgb(75, 75, 75) 45%, rgb(54, 54, 54) 45%, rgb(26, 26, 26) 55%)',
 				zuneWindow: 'linear-gradient(to bottom,rgb(75, 75, 75) 3.5%,rgb(0, 0, 0) 4.5%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
 				zuneStartmenu: 'linear-gradient(to bottom,rgb(75, 75, 75) 8%,rgb(0, 0, 0) 9%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
 
-				//Lollypop Theme
+				//Lollypop Appearance
 				lollypopTaskBar: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%,rgb(241, 86, 255)18%, rgb(241, 86, 255) 90%, rgb(101, 46, 105) 99%)',
-				lollypopStartButton: 'linear-gradient(to bottom, rgb(243, 113, 255) 0%, rgb(148, 0, 161) 50%,rgb(148, 0, 161) 60%, rgb(168, 91, 175) 99%)',
+				lollypopStartButton: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(161, 163, 187)18%, rgb(162, 164, 187) 50%, rgb(255, 255, 255) 90%, rgb(158, 158, 158) 99%)',
 				lollypopSystemTray: 'linear-gradient(to bottom,rgb(252, 219, 255) 0%,rgb(247, 154, 255) 18%, rgb(247, 154, 255) 90%, rgb(241, 85, 255) 99%)',
 				lollypopWindow: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%, rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
 				lollypopStartmenu: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%,rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
+
+
+				//Silver Appearance
+				silverTaskBar: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(161, 163, 187)18%, rgb(162, 164, 187) 50%, rgb(255, 255, 255) 90%, rgb(158, 158, 158) 99%)',
+				silverStartButton: 'linear-gradient(to bottom, rgb(6, 173, 0) 0%, rgb(178, 255, 168) 10%, rgb(255, 255, 255) 15%,rgb(6, 168, 0) 40%, rgb(3, 102, 0) 80%, rgb(4, 116, 0) 95%, rgb(5, 160, 0) 99%)',
+				silverSystemTray: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgb(161, 163, 187) 60%)',
+				silverWindow: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(161, 163, 187) 1%,rgb(255, 255, 255) 6%, rgb(255, 255, 255) 92%,rgb(148, 150, 175) 99%)',
+				silverStartmenu: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(148, 150, 175) 1%,rgb(255, 255, 255) 13%, rgb(255, 255, 255) 92%,rgb(148, 150, 175) 99%)',
+
+				//Olive Green Appearance
+				oliveTaskBar: 'linear-gradient(to bottom,rgb(238, 238, 238) 0%, rgb(180, 202, 148) 18%, rgb(180, 202, 148) 90%, rgb(90, 100, 74) 99%)',
+				oliveStartButton: 'linear-gradient(to bottom, rgb(146, 196, 146) 0%, rgb(144, 201, 136) 10%, rgb(255, 255, 255) 15%,rgb(106, 145, 104) 40%, rgb(79, 105, 78) 80%, rgb(90, 114, 90) 95%, rgb(118, 156, 116) 99%)',
+				oliveSystemTray: 'linear-gradient(to bottom,rgb(243, 255, 172) 0%, rgb(243, 255, 172) 20%, rgb(197, 196, 115) 99%)',
+				oliveWindow: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(180, 202, 148)  1%,rgb(180, 202, 148)  6%, rgb(255, 255, 255) 92%,rgb(180, 202, 148)  99%)',
+				oliveStartmenu: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(173, 192, 142) 1%,rgb(207, 231, 170) 13%, rgb(180, 202, 148) 92%,rgb(180, 202, 148) 99%)',
 
 				divider: 'linear-gradient(to right, transparent, rgba(182, 182, 182) 50%, transparent)',
 				dividerBlue: 'linear-gradient(to right, transparent, rgb(27, 93, 155, 0.4) 50%, transparent)',

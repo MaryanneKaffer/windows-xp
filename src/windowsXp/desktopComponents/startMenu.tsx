@@ -5,14 +5,14 @@ import startMenuArrow from "@/public/icons/startMenuArrow.png";
 import { rightColumn } from "@/config/data/startMenuData";
 import logOffIcon from "@/public/icons/logOffIcon.png";
 import turnOffIcon from "@/public/icons/turnOffIcon.png";
-import { currentTheme } from "./windowComponents/desktopPropertiesComponent";
+import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 
 export default function StartMenu() {
   return (
     <>
-      <section className="flex place-items-center text-3xl font-arial font-bold">
+      <section className={`flex place-items-center text-3xl font-arial font-bold ${currentAppearance.light && "text-black"}`}>
         <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
-        <p> user</p>
+        <p className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)]"> user</p>
       </section>
 
       <section className="flex">
@@ -59,7 +59,7 @@ export default function StartMenu() {
         </div>
       </section >
 
-      <section className="flex place-items-center text-[22px] h-[53px] mr-5">
+      <section className={`flex place-items-center text-[22px] h-[53px] mr-5 ${currentAppearance.light && "text-black"}`}>
         <button className="active:brightness-75 flex place-items-center ml-auto cursor-default">
           <Image src={logOffIcon.src} alt='Log Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Log Off
         </button>
@@ -67,7 +67,7 @@ export default function StartMenu() {
           <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />Turn Off Computer
         </button>
       </section>
-      <div className={`bg-gradient-to-t ${currentTheme.shadow1} h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]`}></div>
+      <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]`}></div>
     </>
   );
 }

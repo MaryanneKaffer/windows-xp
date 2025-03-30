@@ -2,6 +2,7 @@ import Image from "next/image";
 import monitor from "@/public/desktopImage/monitor.png";
 import { Wallpapers } from "@/config/data/windowData/displayPropertiesData/wallpapersData";
 import jpgIcon from "@/public/icons/jpgIcon.png";
+import { currentAppearance } from "../desktopPropertiesComponent";
 
 interface DesktopDisplayComponentProps {
     selectedWallpaper: string;
@@ -10,7 +11,7 @@ interface DesktopDisplayComponentProps {
 }
 export default function DesktopDisplayComponent({ selectedWallpaper, setSelectedWallpaper, currentWallpaper }: DesktopDisplayComponentProps) {
     return (
-        <div className="w-full lg:h-[85%] h-[305px]  border-gray-400 border-[2px] rounded-md rounded-t-none text-black px-4 relative">
+        <div className="w-full lg:h-[85%] h-[305px]  border-gray-400 border-[2px] rounded-sm  rounded-t-none text-black px-4 relative">
             <Image src={monitor.src} alt="Monitor" width={200} height={190} draggable={false} className="mt-1 lg:w-[200px] lg:h-[190px] w-[150px] justify-self-center " />
             <p className="">Background:</p>
             <div className="flex gap-2">
@@ -24,10 +25,10 @@ export default function DesktopDisplayComponent({ selectedWallpaper, setSelected
                             </button>
                         </div>
                     ))}
-                    <button className="cursor-default w-auto h-[28px] border-gray-500 border-2 rounded-md my-2 leading-none active:border-winXpBlue px-4 lg:hidden absolute bottom-[6px] left-6">Customize Desktop...</button>
+                    <button className={`cursor-default w-auto h-[28px] ${currentAppearance.buttonborder} active:brightness-50 border-2 rounded-sm  my-2 leading-none px-4 lg:hidden absolute bottom-[6px] left-6`}>Customize Desktop...</button>
                 </div>
                 <div className="grid gap-0 ml-auto ">
-                    <button className="cursor-default w-[90px] h-[28px] border-gray-500 border-2 rounded-md leading-none active:border-winXpBlue px-4">Browse...</button>
+                    <button className={`cursor-default w-[90px] h-[28px] ${currentAppearance.buttonborder} active:brightness-50 border-2 rounded-sm leading-none px-4`}>Browse...</button>
                     <span className="leading-[18px]">
                         <p>Position:</p>
                         <select disabled className="bg-transparent border-1 border-gray-400 w-[90px] h-[28px]">
@@ -40,7 +41,7 @@ export default function DesktopDisplayComponent({ selectedWallpaper, setSelected
                     </span>
                 </div>
             </div>
-            <button className="cursor-default w-auto h-[28px] border-gray-500 border-2 rounded-md my-2 leading-none active:border-winXpBlue px-4 lg:block hidden">Customize Desktop...</button>
+            <button className={`cursor-default w-auto h-[28px] ${currentAppearance.buttonborder} active:brightness-50 border-2 rounded-sm my-2 leading-none px-4 lg:block hidden`}>Customize Desktop...</button>
         </div>
     )
 }
