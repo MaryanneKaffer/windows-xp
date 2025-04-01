@@ -2,6 +2,7 @@ import recycleBinIcon from "@/public/icons/recycleBinIcon.png";
 import folderClosedIcon from "@/public//icons/folderClosedIcon.png";
 import notepadIcon from "@/public/icons/notepadIcon.png";
 import githubIcon from "@/public/logo/githubIcon.svg";
+import pdfIcon from "@/public/icons/pdfIcon.ico";
 
 export const desktopData = [
     {
@@ -12,15 +13,15 @@ export const desktopData = [
         width: "50vw",
         height: "600px",
     },
-    {
+    {   
         name: "Curriculum",
-        icon: folderClosedIcon,
+        icon: pdfIcon,
         type: "curriculum",
         fixedSize: false,
         width: "60vw",
         height: "94.8vh",
-        mobileWidth: "60vw",
-        mobileHeight: "94.8vh",
+        mobileWidth: "100dvw",
+        mobileHeight: "94.8dvh",
     },
     {
         name: "Certificates",
@@ -35,9 +36,6 @@ export const desktopData = [
         icon: githubIcon,
         type: "link",
         link: "https://github.com/MaryanneKaffer",
-        fixedSize: false,
-        width: "50vw",
-        height: "600px",
     },
     {
         name: "Notepad",

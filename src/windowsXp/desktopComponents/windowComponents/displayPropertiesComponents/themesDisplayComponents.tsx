@@ -11,9 +11,9 @@ export function ThemesDisplayComponent() {
             <p className="lg:leading-[20px] leading-[13px]">A theme is a background plus a set of sounds, icons, and other elements to help you personalize your computer with one click.</p>
             <p className="lg:mt-3 mt-1">Theme:</p>
             <div className="place-items-center flex gap-2">
-                <select value={selectedTheme} onChange={(e) => setSelectedTheme(e.target.value)} className="w-[50%] bg-white h-[25px]">
+                <select value={selectedTheme} onChange={(e) => setSelectedTheme(e.target.value)} className="cursor-default w-[50%] bg-white h-[25px]">
                     {Themes.map((theme, index) => (
-                        <option key={index} disabled={theme.disabled}>{theme.name}</option>
+                        <option key={index} disabled={theme.disabled} >{theme.name}</option>
                     ))}
                 </select>
                 <button className={`w-[25%] cursor-default h-[28px] border-2 rounded-sm  leading-none ${currentAppearance.buttonborder} active:brightness-50`}>Save as...</button>

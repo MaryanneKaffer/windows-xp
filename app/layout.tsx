@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo/logoIcon.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <body className="justify-self-center bg-black lg:w-[1440px] lg:min-h-[900px] h-[100dvh] w-full no-drag font-tahoma overflow-hidden">
+      <body className="justify-self-center bg-black lg:w-[1440px] lg:min-h-[900px] h-[100dvh] w-full no-drag font-tahoma overflow-hidden cursor-default">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main>{children}</main>
         </Providers>

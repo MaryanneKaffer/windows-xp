@@ -11,6 +11,10 @@ const config = {
 	],
 	theme: {
 		extend: {
+			cursor: {
+				default: 'url("/cursor/default.cur"), auto',
+				pointer: 'url("/cursor/pointer.cur"), auto',
+			},
 			backgroundImage: {
 				startUp1: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 30%, rgb(29, 72, 165) 70%)',
 				startUp2: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 40%, rgb(29, 72, 165) 60%)',

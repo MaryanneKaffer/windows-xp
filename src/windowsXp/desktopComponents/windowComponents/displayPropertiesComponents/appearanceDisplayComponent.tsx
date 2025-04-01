@@ -34,7 +34,7 @@ export function AppearanceDisplayComponent({ selectedAppearance, setSelectedAppe
                         <option>Windows XP style</option>
                     </select>
                     <p className="">Color scheme:</p>
-                    <select value={selectedAppearance.name} onChange={(e) => setSelectedAppearance(Appearance.find(Appearance => Appearance.name === e.target.value) || selectedAppearance)} className="w-full px-1 bg-white h-[25px]">
+                    <select value={selectedAppearance.name} onChange={(e) => setSelectedAppearance(Appearance.find(Appearance => Appearance.name === e.target.value) || selectedAppearance)} className="cursor-default w-full px-1 bg-white h-[25px]">
                         {Appearance.map((appearance, index) => (
                             <option key={index}>{appearance.name}</option>
                         ))}
