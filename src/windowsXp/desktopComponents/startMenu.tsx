@@ -10,9 +10,9 @@ import { currentAppearance } from "./windowComponents/desktopPropertiesComponent
 export default function StartMenu() {
   return (
     <>
-      <section className={`flex place-items-center text-3xl font-arial font-bold ${currentAppearance.light && "text-black"}`}>
+      <section className={`flex place-items-center text-3xl ${currentAppearance.light && "text-black"}`}>
         <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
-        <p className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)]"> user</p>
+        <p className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)] font-arial font-bold italic"> user</p>
       </section>
 
       <section className="flex">

@@ -7,12 +7,13 @@ import { StaticImageData } from "next/image";
 interface WindowData {
     name: string;
     icon: string;
+    type: string | null;
     fixedSize?: boolean;
     width?: string;
     height?: string;
 }
 
-export function ContextMenu(position: { x: number, y: number, item: string, setOpenWindows: React.Dispatch<React.SetStateAction<WindowData[]>>, appName: string, appIcon: StaticImageData }) {
+export function ContextMenu(position: { x: number, y: number, item: string, type: string, setOpenWindows: React.Dispatch<React.SetStateAction<WindowData[]>>, appName: string, appIcon: StaticImageData }) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const menuData = position.item === "App" ? appMenuData(position.setOpenWindows, { name: position.appName, icon: position.appIcon }) : position.item === "Desktop" ? desktopMenuData(position.setOpenWindows) : taskBarMenuData;
     const menuHeight = position.item === "Task Bar" ? 383 : 0;

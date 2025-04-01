@@ -13,6 +13,7 @@ export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<{
     name: string;
     icon: string;
+    type: string | null;
     fixedSize?: boolean;
     width?: string;
     height?: string;
@@ -27,9 +28,9 @@ export default function Desktop() {
   const [icon, setIcon] = useState<StaticImageData | null>(null);
   const [name, setName] = useState("");
 
-  const handleDoubleClick = (name: string, icon: StaticImageData, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
+  const handleDoubleClick = (name: string, icon: StaticImageData, type: string, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
-      setOpenWindows((prev) => [...prev, { name, icon: icon.src, fixedSize, width, height, mobileHeight, mobileWidth }]);
+      setOpenWindows((prev) => [...prev, { name, icon: icon.src, type, fixedSize, width, height, mobileHeight, mobileWidth }]);
     }
   }
 
@@ -52,24 +53,27 @@ export default function Desktop() {
         <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => Menu(e, "Desktop")} />
         <div className="flex flex-col">
           {desktopData.map((item, index) => (
-            <button ref={refApp} key={index} onContextMenu={(e) => Menu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" onClick={() => setActiveIndex(index)} onDoubleClick={() => handleDoubleClick(item.name, item.icon, item.fixedSize, item.width, item.height)} draggable="true">
+            <button ref={refApp} key={index} onContextMenu={(e) => Menu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" draggable="true" onClick={() => setActiveIndex(index)}
+              onDoubleClick={() => { if (item.type === "link") { window.open(item.link, "_blank") } else { handleDoubleClick(item.name, item.icon, item.type, item.fixedSize, item.width, item.height, item.mobileHeight, item.mobileWidth) } }}>
+
               <Image src={item.icon} alt={item.name} draggable="false" className={`w-[50px] h-[50px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.3)] mt-auto mb-1 ${activeIndex === index ? "brightness-75 contrast-125 inset-0 opacity-60 " : ""}`} />
               <p className={`text-xl text-center w-[100px] mb-auto drop-shadow-[2px_3px_2px_rgba(0,0,0,0.7)] ${activeIndex === index ? "bg-winXpBlue" : ""}`}>{item.name}</p>
             </button>
           ))}
         </div>
         {openWindows.map((window, index,) => (
-          <FloatingWindow key={index} name={window.name} icon={window.icon} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? ""} mobileHeight={window.mobileHeight ?? ""} />
+          <FloatingWindow key={index} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? ""} mobileHeight={window.mobileHeight ?? ""} />
         ))}
         <div onContextMenu={(e) => Menu(e, "Task Bar")}>
           <TaskBar />
         </div>
-      </section>
+      </section >
       {menuVisible && (
         <div ref={refStart}>
-          <ContextMenu x={position.x} y={position.y} item={item} setOpenWindows={setOpenWindows} appName={name} appIcon={icon ?? defaultIcon} />
+          <ContextMenu x={position.x} y={position.y} item={item} setOpenWindows={setOpenWindows} appName={name} appIcon={icon ?? defaultIcon} type={""} />
         </div>
-      )}
+      )
+      }
     </>
   );
 }
