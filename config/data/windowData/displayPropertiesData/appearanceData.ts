@@ -1,6 +1,5 @@
 import WindowsXp from "@/public/themes/windowsXp.png"
 import Zune from "@/public/themes/zune.png"
-import { button } from "@heroui/theme"
 
 export const Appearance = [
     {

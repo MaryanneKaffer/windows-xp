@@ -21,7 +21,7 @@ export const desktopData = [
         width: "60vw",
         height: "94.8vh",
         mobileWidth: "100dvw",
-        mobileHeight: "94.8dvh",
+        mobileHeight: "94dvh",
     },
     {
         name: "Certificates",

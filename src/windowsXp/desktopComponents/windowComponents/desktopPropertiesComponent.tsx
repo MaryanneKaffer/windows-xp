@@ -5,6 +5,8 @@ import { Wallpapers } from "@/config/data/windowData/displayPropertiesData/wallp
 import { ThemesDisplayComponent } from "./displayPropertiesComponents/themesDisplayComponents";
 import { AppearanceDisplayComponent } from "./displayPropertiesComponents/appearanceDisplayComponent";
 import { Appearance } from "@/config/data/windowData/displayPropertiesData/appearanceData";
+import ScreenSaverComponent from "./displayPropertiesComponents/screenSaverComponent";
+import { ScreenSavers } from "@/config/data/windowData/displayPropertiesData/screenSaversData";
 
 interface Appearance {
     name: string;
@@ -24,12 +26,14 @@ interface Appearance {
 
 export let currentWallpaper: string = Wallpapers[3].wallpaper;
 export let currentAppearance: Appearance = Appearance[0];
+export let currentScreenSaver: string = ScreenSavers[1].screenSaver || "";
 
 export default function DesktopPropertiesComponent({ onClose }: { onClose: () => void }) {
     const [hoveringIndex, setHoveringIndex] = useState<number | null>(null);
     const [activeIndex, setActiveIndex] = useState<[number, string] | null>([0, "Themes"]);
     const [selectedAppearance, setSelectedAppearance] = useState<Appearance>(currentAppearance);
     const [selectedWallpaper, setSelectedWallpaper] = useState("");
+    const [selectedScreenSaver, setSelectedScreenSaver] = useState("");
 
     const Apply = () => {
         if (selectedWallpaper) {
@@ -40,10 +44,14 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
             currentAppearance = selectedAppearance;
             setSelectedAppearance(selectedAppearance);
         }
+        if (selectedScreenSaver) {
+            currentScreenSaver = selectedScreenSaver;
+            setSelectedScreenSaver("");
+        }
     };
 
     const isAbleToApply = () => {
-        if (selectedWallpaper && selectedWallpaper !== currentWallpaper || selectedAppearance && selectedAppearance.name !== currentAppearance.name) return true;
+        if (selectedWallpaper && selectedWallpaper !== currentWallpaper || selectedAppearance && selectedAppearance.name !== currentAppearance.name || selectedScreenSaver && selectedScreenSaver !== currentScreenSaver) return true;
     };
 
     return (
@@ -61,6 +69,7 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
 
             {activeIndex?.[1] === "Themes" && <ThemesDisplayComponent />}
             {activeIndex?.[1] === "Desktop" && <DesktopDisplayComponent selectedWallpaper={selectedWallpaper} setSelectedWallpaper={setSelectedWallpaper} currentWallpaper={currentWallpaper} />}
+            {activeIndex?.[1] === "Screen Saver" && <ScreenSaverComponent selectedScreenSaver={selectedScreenSaver} setSelectedScreenSaver={setSelectedScreenSaver} currentScreenSaver={currentScreenSaver} />}
             {activeIndex?.[1] === "Appearance" && <AppearanceDisplayComponent selectedAppearance={selectedAppearance} setSelectedAppearance={setSelectedAppearance} currentAppearance={currentAppearance} />}
 
             <div className="text-black ml-auto flex gap-2 mx-auto h-[39px] lg:h-[53px] place-items-center">
