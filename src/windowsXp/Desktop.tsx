@@ -1,12 +1,13 @@
 import Image, { StaticImageData } from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TaskBar from "./desktopComponents/taskBar";
 import { desktopData } from "@/config/data/desktopData";
 import FloatingWindow from "./desktopComponents/floatingWindow";
 import { ContextMenu } from "./desktopComponents/contextMenu";
 import { useClickAway } from "react-use";
 import defaultIcon from "@/public/icons/supportIcon.png";
-import { currentWallpaper } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
+import { currentWallpaper } from "./desktopComponents/windowComponents/desktopPropertiesComponent"
+import { currentScreenSaver } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 
 export default function Desktop() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -27,6 +28,7 @@ export default function Desktop() {
   const refStart = useRef(null);
   const [icon, setIcon] = useState<StaticImageData | null>(null);
   const [name, setName] = useState("");
+  const [screenSaving, setScreenSaving] = useState(false);
 
   const handleDoubleClick = (name: string, icon: StaticImageData, type: string, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
@@ -44,12 +46,41 @@ export default function Desktop() {
     setIcon(appIcon!);
   };
 
+  useEffect(() => {
+    let timeout: string | number | NodeJS.Timeout | undefined;
+
+    const resetTimer = () => {
+      clearTimeout(timeout);
+      setScreenSaving(false);
+      timeout = setTimeout(() => {
+        console.log("Usuário inativo por 10 segundos");
+        setScreenSaving(true)
+      }, 10000);
+    };
+
+    const events = ['mousemove', 'keydown', 'click', 'scroll'];
+
+    events.forEach(event =>
+      window.addEventListener(event, resetTimer),
+    );
+
+    resetTimer();
+
+    return () => {
+      clearTimeout(timeout);
+      events.forEach(event =>
+        window.removeEventListener(event, resetTimer),
+      );
+    };
+  }, []);
+
   useClickAway(refStart, () => { setMenuVisible(false) });
   useClickAway(refApp, () => { setActiveIndex(null) });
 
   return (
     <>
       <section className="h-[100dvh] w-full overflow-hidden bg-cover relative p-5">
+        {screenSaving && <video autoPlay src={currentScreenSaver} draggable={false} className="lg:w-[1444px] lg:h-screen h-[100dvh] w-[100dvh] object-cover z-[9999] fixed top-0 lg:left-[14.7%] left-0" />}
         <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => Menu(e, "Desktop")} />
         <div className="flex flex-col">
           {desktopData.map((item, index) => (

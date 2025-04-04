@@ -18,5 +18,17 @@ export const ScreenSavers = [
     {
         name: "3D Text",
         screenSaver: "/screenSavers/text.mp4",
-    }
+    },
+    {
+        name: "Bezier",
+        screenSaver: "/screenSavers/bezier.mp4"
+    },
+    {
+        name: "Mystify",
+        screenSaver: "/screenSavers/mystify.mp4"
+    },
+    {
+        name: "Starfield",
+        screenSaver: "/screenSavers/starfield.mp4"
+    },
 ]
