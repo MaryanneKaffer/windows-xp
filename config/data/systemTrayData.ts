@@ -1,6 +1,6 @@
-import windowsDefenderIcon from "@/public/icons/defenderIcon.png";
-import firewall from "@/public/icons/fireWallIcon.png";
+import windowsDefenderIcon from "@/public/icons/defenderErrorIcon.png";
 import myComputer from "@/public/icons/myComputerIcon.png";
+import volumeIcon from "@/public/icons/volumeIcon.png";
 export const SystemTray = [
   {
     name: "My Computer",
@@ -11,7 +11,7 @@ export const SystemTray = [
     icon: windowsDefenderIcon,
   },
   {
-    name: "Firewall",
-    icon: firewall,
+    name: "Volume",
+    icon: volumeIcon,
   },
 ];
