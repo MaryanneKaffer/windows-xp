@@ -7,6 +7,7 @@ import { AppearanceDisplayComponent } from "./displayPropertiesComponents/appear
 import { Appearance } from "@/config/data/windowData/displayPropertiesData/appearanceData";
 import ScreenSaverComponent from "./displayPropertiesComponents/screenSaverComponent";
 import { ScreenSavers } from "@/config/data/windowData/displayPropertiesData/screenSaversData";
+import { SettingsComponent } from "./displayPropertiesComponents/settingsComponent";
 
 interface Appearance {
     name: string;
@@ -71,6 +72,8 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
             {activeIndex?.[1] === "Desktop" && <DesktopDisplayComponent selectedWallpaper={selectedWallpaper} setSelectedWallpaper={setSelectedWallpaper} currentWallpaper={currentWallpaper} />}
             {activeIndex?.[1] === "Screen Saver" && <ScreenSaverComponent selectedScreenSaver={selectedScreenSaver} setSelectedScreenSaver={setSelectedScreenSaver} currentScreenSaver={currentScreenSaver} />}
             {activeIndex?.[1] === "Appearance" && <AppearanceDisplayComponent selectedAppearance={selectedAppearance} setSelectedAppearance={setSelectedAppearance} currentAppearance={currentAppearance} />}
+            {activeIndex?.[1] === "Settings" && <SettingsComponent/>}
+
 
             <div className="text-black ml-auto flex gap-2 mx-auto h-[39px] lg:h-[53px] place-items-center">
                 <button onClick={onClose} className={`cursor-default ml-auto w-[23%] h-[28px] ${currentAppearance.buttonborder} active:brightness-50 border-2 rounded-sm  leading-none `}>OK</button>
