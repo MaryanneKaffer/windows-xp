@@ -29,7 +29,7 @@ export default function Initializing() {
   if (!showStartup) return <Startup />;
 
   return (
-    <div className="text-4xl text-gray-400 cursor-none" style={isLargeScreen ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
+    <div className="text-4xl text-gray-400 cursor-none w-[100dvw]" style={isLargeScreen ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
       <p className={`mx-2 ${visible ? "" : "hidden"}`}>_</p>
     </div>
   );

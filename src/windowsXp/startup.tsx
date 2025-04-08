@@ -25,7 +25,7 @@ export default function Startup() {
   return (
     <>
       {screen === "startup" && (
-        <section className="h-[100dvh] grid grid-rows-[1fr_auto] cursor-none" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
+        <section className="h-[100dvh] w-[100dvw] grid grid-rows-[1fr_auto] cursor-none" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
           <div className="flex flex-col self-center mx-auto">
             <Image src={winXpLogo.src} alt="Windows XP Logo" className="lg:w-[450px] mb-10" width={300} height={200} />
             <div className="border-white border-3 rounded-lg p-[3px] w-72 overflow-hidden mx-auto">
@@ -40,8 +40,8 @@ export default function Startup() {
         </section>
       )}
       {screen === "welcome" && (
-        <section className="cursor-none" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
-          <div className="bg-blue-800 h-[100dvh] flex relative">
+        <section className="cursor-none h-[100dvh] w-[100dvw]" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
+          <div className="bg-blue-800 h-[100dvh] w-full flex relative">
             <div className="h-[3px] flex lg:w-[1000px] w-[400px] fixed top-[12.5dvh] lg:right-[580px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
             <div className="h-[3px] flex lg:w-[1000px] w-[400px] fixed bottom-[12.5dvh] lg:right-[580px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
 

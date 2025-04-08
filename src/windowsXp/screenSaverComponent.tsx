@@ -36,7 +36,7 @@ export default function ScreenSaverComponent({ screenSaving, setScreenSaving }: 
     }, []);
     return (
         <>
-            {screenSaving && <video autoPlay src={currentScreenSaver} draggable={false} className="h-[100dvh] w-[100dvh] object-cover z-[9999]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}/>}
+            {screenSaving && <video autoPlay src={currentScreenSaver} draggable={false} className="absolute object-cover z-[9999]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {width: "100dvw", height: "100dvh"}} />}
         </>
     )
 }
