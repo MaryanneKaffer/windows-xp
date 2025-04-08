@@ -8,6 +8,7 @@ import ScreenSaverComponent from "./screenSaverComponent";
 import defaultIcon from "@/public/icons/supportIcon.png";
 import { desktopData } from "@/config/data/desktopData";
 import TaskBar from "./desktopComponents/taskBar";
+import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 
 export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
@@ -41,9 +42,9 @@ export default function Desktop() {
   useClickAway(refApp, () => { setActiveIndex(null) });
 
   return (
-    <>
-      <section className="h-[100dvh] w-full overflow-hidden bg-cover relative p-5">
-        <ScreenSaverComponent screenSaving={screenSaving} setScreenSaving={setScreenSaving} />
+    <div className="h-[100dvh] place-items-center justify-center flex flex-col">
+      <ScreenSaverComponent screenSaving={screenSaving} setScreenSaving={setScreenSaving} />
+      <section className="h-[100dvh] w-full overflow-hidden bg-cover relative p-5 max-h-[100dvh] max-w-[100dvw]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
         <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => openContextMenu(e, "Desktop")} />
         <div ref={refApp} className="flex flex-col">
           {desktopData.map((item, index) => (
@@ -66,6 +67,6 @@ export default function Desktop() {
           <ContextMenu x={position.x} y={position.y} item={item} setOpenWindows={setOpenWindows} appName={name} appIcon={icon ?? defaultIcon} type={""} />
         </div>
       )}
-    </>
+    </div>
   );
 }

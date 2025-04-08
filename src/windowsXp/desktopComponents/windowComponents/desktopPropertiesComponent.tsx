@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { propertiesData } from "@/config/data/windowData/desktopPropertiesData";
 import DesktopDisplayComponent from "./displayPropertiesComponents/desktopDisplayComponent";
@@ -10,24 +11,14 @@ import { ScreenSavers } from "@/config/data/windowData/displayPropertiesData/scr
 import { SettingsComponent } from "./displayPropertiesComponents/settingsComponent";
 
 interface Appearance {
-    name: string;
-    taskbar: string;
-    startbutton: string;
-    window: string;
-    systemtray: string;
-    border: string;
-    startmenu: string;
-    sample: string;
-    buttonborder: string;
-    disabled?: boolean;
-    shadow1: string;
-    shadow2: string;
-    light?: boolean;
+    name: string; taskbar: string; startbutton: string; window: string; systemtray: string; border: string; startmenu: string; sample: string; buttonborder: string;
+    disabled?: boolean; shadow1: string; shadow2: string; light?: boolean;
 }
 
 export let currentWallpaper: string = Wallpapers[3].wallpaper;
 export let currentAppearance: Appearance = Appearance[0];
-export let currentScreenSaver: string = ScreenSavers[1].screenSaver || "";
+export let currentScreenSaver: string = ScreenSavers[2].screenSaver || "";
+export let currentResolution: string[] = ["1920", "1080"];
 
 export default function DesktopPropertiesComponent({ onClose }: { onClose: () => void }) {
     const [hoveringIndex, setHoveringIndex] = useState<number | null>(null);
@@ -35,6 +26,7 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
     const [selectedAppearance, setSelectedAppearance] = useState<Appearance>(currentAppearance);
     const [selectedWallpaper, setSelectedWallpaper] = useState("");
     const [selectedScreenSaver, setSelectedScreenSaver] = useState("");
+    const [selectedResolution, setSelectedResolution] = useState<string[]>(currentResolution);
 
     const Apply = () => {
         if (selectedWallpaper) {
@@ -43,16 +35,19 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
         }
         if (selectedAppearance) {
             currentAppearance = selectedAppearance;
-            setSelectedAppearance(selectedAppearance);
         }
         if (selectedScreenSaver) {
             currentScreenSaver = selectedScreenSaver;
             setSelectedScreenSaver("");
         }
+        if (selectedResolution) {
+            currentResolution = selectedResolution;
+        }
     };
 
     const isAbleToApply = () => {
-        if (selectedWallpaper && selectedWallpaper !== currentWallpaper || selectedAppearance && selectedAppearance.name !== currentAppearance.name || selectedScreenSaver && selectedScreenSaver !== currentScreenSaver) return true;
+        if (selectedWallpaper && selectedWallpaper !== currentWallpaper || selectedAppearance && selectedAppearance.name !== currentAppearance.name ||
+            selectedScreenSaver && selectedScreenSaver !== currentScreenSaver || selectedResolution && selectedResolution !== currentResolution) return true;
     };
 
     return (
@@ -72,7 +67,7 @@ export default function DesktopPropertiesComponent({ onClose }: { onClose: () =>
             {activeIndex?.[1] === "Desktop" && <DesktopDisplayComponent selectedWallpaper={selectedWallpaper} setSelectedWallpaper={setSelectedWallpaper} currentWallpaper={currentWallpaper} />}
             {activeIndex?.[1] === "Screen Saver" && <ScreenSaverComponent selectedScreenSaver={selectedScreenSaver} setSelectedScreenSaver={setSelectedScreenSaver} currentScreenSaver={currentScreenSaver} />}
             {activeIndex?.[1] === "Appearance" && <AppearanceDisplayComponent selectedAppearance={selectedAppearance} setSelectedAppearance={setSelectedAppearance} currentAppearance={currentAppearance} />}
-            {activeIndex?.[1] === "Settings" && <SettingsComponent/>}
+            {activeIndex?.[1] === "Settings" && <SettingsComponent selectedResolution={selectedResolution} setSelectedResolution={setSelectedResolution} currentResolution={currentResolution} />}
 
 
             <div className="text-black ml-auto flex gap-2 mx-auto h-[39px] lg:h-[53px] place-items-center">

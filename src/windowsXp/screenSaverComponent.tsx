@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { currentScreenSaver } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
+import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 
 type Props = {
     screenSaving: boolean;
@@ -35,7 +36,7 @@ export default function ScreenSaverComponent({ screenSaving, setScreenSaving }: 
     }, []);
     return (
         <>
-            {screenSaving && <video autoPlay src={currentScreenSaver} draggable={false} className="lg:w-[1444px] lg:h-screen h-[100dvh] w-[100dvh] object-cover z-[9999] fixed top-0 lg:left-[12.4%] left-0" />}
+            {screenSaving && <video autoPlay src={currentScreenSaver} draggable={false} className="h-[100dvh] w-[100dvh] object-cover z-[9999]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}/>}
         </>
     )
 }
