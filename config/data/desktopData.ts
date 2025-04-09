@@ -13,7 +13,7 @@ export const desktopData = [
         width: "50vw",
         height: "600px",
     },
-    {   
+    {
         name: "Curriculum",
         icon: pdfIcon,
         type: "curriculum",
@@ -24,7 +24,7 @@ export const desktopData = [
         mobileHeight: "94dvh",
     },
     {
-        name: "Certificates",
+        name: "New Folder",
         icon: folderClosedIcon,
         type: "folder",
         fixedSize: false,
