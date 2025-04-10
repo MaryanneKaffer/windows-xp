@@ -57,10 +57,10 @@ export default function Desktop() {
           ))}
         </div>
         {openWindows.map((window, index,) => (
-          <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? ""} mobileHeight={window.mobileHeight ?? "50%"} />
+          <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"97dvw"} mobileHeight={"60dvh"} />
         </div>
       </section >
       {menuVisible && (

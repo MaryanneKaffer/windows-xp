@@ -6,6 +6,7 @@ import { rightColumn } from "@/config/data/startMenuData";
 import logOffIcon from "@/public/icons/logOffIcon.png";
 import turnOffIcon from "@/public/icons/turnOffIcon.png";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
+import { currentUserPicture } from "./windowComponents/userAccountsComponent";
 
 interface WindowData {
   setOpenWindows: React.Dispatch<React.SetStateAction<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>>;
@@ -15,25 +16,28 @@ interface WindowData {
   fixedSize?: boolean;
   width?: string;
   height?: string;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  mobileWidth?: string;
+  mobileHeight?: string;
 }
 
-export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize, width, height }: WindowData) {
+export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize, width, height, setIsOpen, mobileWidth, mobileHeight }: WindowData) {
   const handleUserMenu = () => {
     setOpenWindows((prevWindows) => [...prevWindows, { name, icon, type, fixedSize, width, height }]);
+    setIsOpen(false);
   };
 
   return (
     <>
       <section className={`flex place-items-center text-3xl ${currentAppearance.light && "text-black"}`}>
         <button onClick={() => handleUserMenu()} className="cursor-pointer">
-          <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
+          <Image src={currentUserPicture} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
         </button>
         <p className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)] font-arial font-bold italic"> user</p>
       </section>
 
-      <section className="flex">
-        <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] w-[550px] fixed lg:left-[-95px] left-[-130px] "></div>
-
+      <section className="flex relative">
+        <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] lg:w-[643px] w-[400px] absolute lg:left-[-95px] left-0 "></div>
         <div className="bg-white w-full lg:h-[530px] h-[480px] pt-2">
           {leftColumn.map((item, index) => (
             <div key={item.name} >

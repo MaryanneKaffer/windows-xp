@@ -32,8 +32,8 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
     const [isMaximized, setIsMaximized] = useState(false);
 
     useEffect(() => {
-        const maxLeft = window.innerWidth - 200;
-        const maxTop = window.innerHeight - 200;
+        const maxLeft = window.innerWidth - 500;
+        const maxTop = window.innerHeight - 800;
 
         const randomLeft = Math.floor(Math.random() * maxLeft);
         const randomTop = Math.floor(Math.random() * maxTop);
@@ -89,7 +89,6 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                 </div>
                 <div className="h-full bg-white">
                     {type === "notepad" && <NotepadComponent />}
-                    {type === "curriculum" && <CurriculumComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}
                 </div>
