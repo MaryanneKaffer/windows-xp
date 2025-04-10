@@ -14,6 +14,7 @@ export const Appearance = [
         buttonborder: 'border-[#245DDA]',
         shadow1: 'from-[rgb(21_55_128)] to-transparent',
         shadow2: 'from-[rgb(108_189_255)] to-transparent',
+        mainColor: 'text-[#245DDA]',
     },
     {
         name: "Lollypop",
@@ -27,6 +28,7 @@ export const Appearance = [
         buttonborder: 'border-[rgb(243_114_255)]',
         shadow1: 'from-[rgb(151_71_156)] to-transparent',
         shadow2: 'from-[rgb(252_220_255)] to-transparent',
+        mainColor: 'text-[rgb(243_114_255)]',
     },
     {
         name: "Olive Green",
@@ -40,6 +42,7 @@ export const Appearance = [
         buttonborder: 'border-[rgb(180_202_148)]',
         shadow1: 'from-[rgb(129_145_106)] to-transparent',
         shadow2: 'from-[#ffffff] to-transparent',
+        mainColor: 'text-[rgb(180_202_148)]',
     },
     {
         name: "Silver",
@@ -54,6 +57,7 @@ export const Appearance = [
         shadow1: 'from-[rgb(148_150_175)] to-transparent',
         shadow2: 'from-[#ffffff] to-transparent',
         light: true,
+        mainColor: 'text-[rgb(148_150_175)]',
     },
     {
         name: "Zune",
@@ -67,5 +71,6 @@ export const Appearance = [
         buttonborder: 'border-black',
         shadow1: 'from-[#1c1c1c] to-transparent',
         shadow2: 'from-[#2e2e2e] to-transparent',
+        mainColor: 'text-[rgb(148_150_175)]',
     },
 ]

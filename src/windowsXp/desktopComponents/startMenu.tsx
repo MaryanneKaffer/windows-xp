@@ -7,11 +7,27 @@ import logOffIcon from "@/public/icons/logOffIcon.png";
 import turnOffIcon from "@/public/icons/turnOffIcon.png";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 
-export default function StartMenu() {
+interface WindowData {
+  setOpenWindows: React.Dispatch<React.SetStateAction<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>>;
+  name: string;
+  icon: string;
+  type: string | null;
+  fixedSize?: boolean;
+  width?: string;
+  height?: string;
+}
+
+export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize, width, height }: WindowData) {
+  const handleUserMenu = () => {
+    setOpenWindows((prevWindows) => [...prevWindows, { name, icon, type, fixedSize, width, height }]);
+  };
+
   return (
     <>
       <section className={`flex place-items-center text-3xl ${currentAppearance.light && "text-black"}`}>
-        <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
+        <button onClick={() => handleUserMenu()} className="cursor-pointer">
+          <Image src={userProfile.src} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
+        </button>
         <p className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)] font-arial font-bold italic"> user</p>
       </section>
 

@@ -10,6 +10,7 @@ import questionIcon from "@/public/icons/questionIcon.png";
 import DesktopPropertiesComponent from "./windowComponents/desktopPropertiesComponent";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 import CurriculumComponent from "./windowComponents/curriculumComponent";
+import UserAccountsComponent from "./windowComponents/userAccountsComponent";
 
 interface FloatingWindowProps {
     name: string;
@@ -44,7 +45,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
 
     return (
         <div >
-            <div ref={nodrag ? undefined : targetRef} id="windowElement" className={`max-w-[screen] !all-unset ${currentAppearance.window} p-0 border-x-3 border-b-3 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
+            <div ref={nodrag ? undefined : targetRef} id="windowElement" className={`max-w-[screen] !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
                 lg:absolute absolute rounded-t-xl`}
                 style={isDesktop ? {
                     width: isMaximized ? "100dvw" : width,
@@ -90,6 +91,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     {type === "notepad" && <NotepadComponent />}
                     {type === "curriculum" && <CurriculumComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
+                    {type === "userAccounts" && <UserAccountsComponent />}
                 </div>
             </div>
         </div >

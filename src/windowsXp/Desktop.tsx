@@ -9,6 +9,7 @@ import defaultIcon from "@/public/icons/supportIcon.png";
 import { desktopData } from "@/config/data/desktopData";
 import TaskBar from "./desktopComponents/taskBar";
 import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
+import userAccountsIcon from "@/public/icons/userAccountsIcon.png";
 
 export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
@@ -59,7 +60,7 @@ export default function Desktop() {
           <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? ""} mobileHeight={window.mobileHeight ?? "50%"} />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} />
         </div>
       </section >
       {menuVisible && (

@@ -12,7 +12,7 @@ import { SettingsComponent } from "./displayPropertiesComponents/settingsCompone
 
 interface Appearance {
     name: string; taskbar: string; startbutton: string; window: string; systemtray: string; border: string; startmenu: string; sample: string; buttonborder: string;
-    disabled?: boolean; shadow1: string; shadow2: string; light?: boolean;
+    disabled?: boolean; shadow1: string; shadow2: string; light?: boolean; mainColor?: string;
 }
 
 export let currentWallpaper: string = Wallpapers[3].wallpaper;

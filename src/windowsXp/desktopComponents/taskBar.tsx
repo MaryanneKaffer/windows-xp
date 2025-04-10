@@ -6,7 +6,17 @@ import { SystemTray } from "@/config/data/systemTrayData";
 import LogoIcon from "@/public/logo/logoIcon.png";
 import StartMenu from "./startMenu";
 
-export default function TaskBar() {
+interface WindowData {
+    setOpenWindows: React.Dispatch<React.SetStateAction<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>>;
+    name: string;
+    icon: string;
+    type: string | null;
+    fixedSize?: boolean;
+    width?: string;
+    height?: string;
+}
+
+export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, width, height }: WindowData) {
     const [time, setTime] = useState(new Date());
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +37,7 @@ export default function TaskBar() {
                     </button>
                 </PopoverTrigger>
                 <PopoverContent className={`${currentAppearance.startmenu} border-[2px] ${currentAppearance.border} rounded-b-none rounded-t-xl fixed !transition-none !duration-0 p-0 lg:w-[550px] lg:h-[700px] lg:bottom-[-4px] lg:left-[-78px]  w-screen h-[650px] bottom-[-4px] left-[-30px]`}>
-                    <StartMenu />
+                    <StartMenu setOpenWindows={setOpenWindows} name={name} icon={icon} type={type} fixedSize={fixedSize} width={width} height={height} />
                 </PopoverContent>
             </Popover>
             <div className={`${currentAppearance.systemtray} lg:w-[210px] w-[100px] flex place-items-center ml-auto relative ${currentAppearance.light || currentAppearance.name === "Olive Green" && "text-black"}`}>

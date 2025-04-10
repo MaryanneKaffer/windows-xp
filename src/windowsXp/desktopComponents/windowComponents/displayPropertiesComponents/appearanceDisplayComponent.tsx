@@ -15,6 +15,7 @@ interface Appearance {
     shadow1: string;
     shadow2: string;
     light?: boolean;
+    mainColor?: string;
 }
 
 interface AppearanceDisplayComponentProps {
