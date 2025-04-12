@@ -15,7 +15,7 @@ interface WindowData {
 
 export function ContextMenu(position: { x: number, y: number, item: string, type: string, setOpenWindows: React.Dispatch<React.SetStateAction<WindowData[]>>, appName: string, appIcon: StaticImageData }) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const menuData = position.item === "App" ? appMenuData(position.setOpenWindows, { name: position.appName, icon: position.appIcon }) : position.item === "Desktop" ? desktopMenuData(position.setOpenWindows) : taskBarMenuData;
+    const menuData = position.item === "App" ? appMenuData(position.setOpenWindows, { name: position.appName, icon: position.appIcon, type: position.type }) : position.item === "Desktop" ? desktopMenuData(position.setOpenWindows) : taskBarMenuData;
     const menuHeight = position.item === "Task Bar" ? 383 : 0;
     return (
         <div className="bg-white border-[1px] border-gray-400 text-black w-auto fixed" style={{ left: position.x, top: position.y - menuHeight }}>

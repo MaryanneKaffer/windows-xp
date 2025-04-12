@@ -20,6 +20,7 @@ export default function Desktop() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [item, setItem] = useState("");
   const [name, setName] = useState("");
+  const [type, setType] = useState("");
   const refStart = useRef(null);
   const refApp = useRef(null);
 
@@ -37,6 +38,7 @@ export default function Desktop() {
     setActiveIndex(index!);
     setName(appName!);
     setIcon(appIcon!);
+    setType(type);
   };
 
   useClickAway(refStart, () => { setMenuVisible(false) });
@@ -60,12 +62,12 @@ export default function Desktop() {
           <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"97dvw"} mobileHeight={"60dvh"} />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"97dvw"} mobileHeight={"58dvh"} />
         </div>
       </section >
       {menuVisible && (
         <div ref={refStart}>
-          <ContextMenu x={position.x} y={position.y} item={item} setOpenWindows={setOpenWindows} appName={name} appIcon={icon ?? defaultIcon} type={""} />
+          <ContextMenu x={position.x} y={position.y} item={item} setOpenWindows={setOpenWindows} appName={name} appIcon={icon ?? defaultIcon} type={type} />
         </div>
       )}
     </div>

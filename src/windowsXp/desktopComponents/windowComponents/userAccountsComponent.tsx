@@ -16,7 +16,7 @@ export default function UserAccountsComponent() {
     const canApply = selectedPicture && selectedPicture.picture !== currentUserPicture || false;
     return (
         <>
-            <div className="w-full h-[6%] bg-yellow-100 flex place-items-center px-2 text-black">
+            <div className="w-full lg:h-[6%] bg-yellow-100 flex place-items-center px-2 text-black">
                 <button className="cursor-default flex place-items-center"><Image alt="Back" src="/icons/backIcon.png" width={35} height={30} className="lg:w-[35px] w-[20px] " />
                     <p className="self-center mx-2 lg:text-2xl text-xl">Back</p>
                 </button>
@@ -24,17 +24,17 @@ export default function UserAccountsComponent() {
                 <Image alt="Home" src="/icons/userAccountsIcon.png" width={35} height={30} className="lg:w-[35px] w-[20px] ml-7" />
                 <p className="self-center mx-2 lg:text-2xl text-xl">Home</p>
             </div>
-            <div className="flex h-[94%]">
+            <div className="flex lg:h-[94%] h-[92%]">
                 <div className={`flex h-[100%] ${currentAppearance.mainColor} lg:text-2xl`}>
                     <div className="flex lg:w-[400px] w-[150px] h-[100%] lg:p-5 p-2 flex flex-col gap-5 relative">
                         <div className={`w-[100%] h-[100%] opacity-70 ${currentAppearance.taskbar} absolute top-0 left-0`}></div>
-                        <div className="w-[100%] h-[30%] bg-white z-10">
+                        <div className="w-[100%] lg:h-[20%] h-[30%] bg-white z-10">
                             <p className={`border-2 border-white border-b-gray-300 font-bold lg:px-5 px-3 bg-gradient-to-l ${currentAppearance.shadow1}`}>Current Picture</p>
-                            <Image alt="User" src={currentUserPicture} width={90} height={90} className="lg:w-[90px] w-[45px] lg:mx-5 mx-4 my-2" draggable="false" />
+                            <Image alt="User" src={currentUserPicture} width={90} height={90} className="lg:w-[90px] w-[45px] lg:mx-5 mx-3 my-2" draggable="false" />
                         </div>
                         <div className="w-[100%] lg:h-[11%] bg-white z-10">
                             <p className={`border-2 border-white border-b-gray-300 font-bold lg:px-5 px-3 bg-gradient-to-l ${currentAppearance.shadow1}`}>Related Tasks</p>
-                            <p className="lg:px-5 px-3 my-1 leading-[10px]">Change the computer theme</p>
+                            <p className="lg:px-5 lg:py-2 px-3 my-1 leading-[10px]">Change the computer theme</p>
                         </div>
                         <div className="w-[100%] lg:h-[11%] bg-white z-10">
                             <p className={`border-2 border-white border-b-gray-300 font-bold lg:px-5 px-3 bg-gradient-to-l ${currentAppearance.shadow1}`}>Learn About</p>
@@ -43,11 +43,11 @@ export default function UserAccountsComponent() {
                     </div>
                 </div >
                 <div className="w-[100%] h-[100%] lg:p-10 px-6 py-2">
-                    <p className={`lg:text-6xl text-2xl leading-[20px] font-bold ${currentAppearance.mainColor}`}>Pick a new picture for your account</p>
-                    <p className="lg:text-2xl text-lg leading-[15px] mt-3 font-bold text-black">The picture you choose will appear on the <span className={`${currentAppearance.mainColor} cursor-pointer border-b border-dashed ${currentAppearance.border} `}>Welcome screen</span>.</p>
+                    <p className={`lg:text-6xl text-2xl leading-[20px] opacity-70 font-bold ${currentAppearance.mainColor}`}>Pick a new picture for your account</p>
+                    <p className="lg:text-2xl text-lg leading-[15px] opacity-70 mt-3 font-bold text-black">The picture you choose will appear on the <span className={`${currentAppearance.mainColor} cursor-pointer border-b border-dashed ${currentAppearance.border} `}>Welcome screen</span>.</p>
                     <div className="overflow-y-auto h-[36.5%] w-full lg:border-3 border-2 border-black mt-5 flex flex-wrap lg:gap-[7px] lg:p-2 p-1">
                         {userPictures.map((picture, index) => (
-                            <button onClick={() => setSelectedPicture(userPictures[index])} className={`${picture === selectedPicture ? `${currentAppearance.border}` : "border-transparent"} lg:border-5 border-3`}  >
+                            <button onClick={() => setSelectedPicture(userPictures[index])} className={`${picture === selectedPicture ? `${currentAppearance.border}` : "border-transparent"} lg:border-5 border-3 cursor-default`}  >
                                 <Image key={picture.name} alt={picture.name} src={picture.picture} width={100} height={100} className="lg:w-[100px] w-[50px] border-transparent lg:border-3 border-2" />
                             </button>
                         ))}

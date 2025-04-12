@@ -32,11 +32,14 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
     const [isMaximized, setIsMaximized] = useState(false);
 
     useEffect(() => {
-        const maxLeft = window.innerWidth - 500;
-        const maxTop = window.innerHeight - 800;
+        const maxLeft = isDesktop ? window.innerWidth - 900 : window.innerWidth - 330;
+        const maxTop = isDesktop ? window.innerHeight - 570 : window.innerHeight - 330;
 
-        const randomLeft = Math.floor(Math.random() * maxLeft);
-        const randomTop = Math.floor(Math.random() * maxTop);
+        const minLeft = isDesktop ? 300 : 20;
+        const minTop = isDesktop ? 50 : 10;
+
+        const randomLeft = Math.floor(Math.random() * (maxLeft - minLeft + 1) + minLeft);
+        const randomTop = Math.floor(Math.random() * (maxTop - minTop + 1) + minTop);
 
         setPosition({ top: randomTop, left: randomLeft });
     }, []);
@@ -87,7 +90,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     </div>
                     <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-full absolute top-[32px] left-[0px]`}></div>
                 </div>
-                <div className="h-full bg-white">
+                <div className="lg:h-[100%] h-[90%] bg-white">
                     {type === "notepad" && <NotepadComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}

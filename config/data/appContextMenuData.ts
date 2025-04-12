@@ -1,4 +1,4 @@
-export const appMenuData = (setOpenWindows: (arg0: (prev: any) => any[]) => any, window: { name: any; icon: any; }) => [
+export const appMenuData = (setOpenWindows: (arg0: (prev: any) => any[]) => any, window: { name: any; icon: any; type: any; }) => [
     {
         name: "Open",
         bold: true,
@@ -6,7 +6,7 @@ export const appMenuData = (setOpenWindows: (arg0: (prev: any) => any[]) => any,
         function: () =>
             setOpenWindows((prev) => [
                 ...prev,
-                { name: window.name, icon: window.icon }
+                { name: window.name, icon: window.icon, type: window.type },
             ]),
     },
     {

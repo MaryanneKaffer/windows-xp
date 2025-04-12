@@ -16,7 +16,7 @@ export default function ScreenSaverComponent({ screenSaving, setScreenSaving }: 
             setScreenSaving(false);
             timeout = setTimeout(() => {
                 setScreenSaving(true)
-            }, 10000);
+            }, 30000);
         };
 
         const events = ['mousemove', 'keydown', 'click', 'scroll'];

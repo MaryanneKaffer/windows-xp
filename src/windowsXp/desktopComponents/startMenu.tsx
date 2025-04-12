@@ -1,5 +1,4 @@
 import Image from "next/image";
-import userProfile from "@/public/user/user.png";
 import { leftColumn } from "@/config/data/startMenuData";
 import startMenuArrow from "@/public/icons/startMenuArrow.png";
 import { rightColumn } from "@/config/data/startMenuData";
@@ -23,7 +22,7 @@ interface WindowData {
 
 export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize, width, height, setIsOpen, mobileWidth, mobileHeight }: WindowData) {
   const handleUserMenu = () => {
-    setOpenWindows((prevWindows) => [...prevWindows, { name, icon, type, fixedSize, width, height }]);
+    setOpenWindows((prevWindows) => [...prevWindows, { name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight }]);
     setIsOpen(false);
   };
 
