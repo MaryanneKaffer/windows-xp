@@ -25,7 +25,7 @@ export default function UserAccountsComponent() {
                 <p className="self-center mx-2 lg:text-2xl text-xl">Home</p>
             </div>
             <div className="flex lg:h-[94%] h-[92%]">
-                <div className={`flex h-[100%] ${currentAppearance.mainColor} lg:text-2xl`}>
+                <div className={`flex h-[100%] w-[40%] ${currentAppearance.mainColor} lg:text-2xl`}>
                     <div className="flex lg:w-[400px] w-[150px] h-[100%] lg:p-5 p-2 flex flex-col gap-5 relative">
                         <div className={`w-[100%] h-[100%] opacity-70 ${currentAppearance.taskbar} absolute top-0 left-0`}></div>
                         <div className="w-[100%] lg:h-[20%] h-[30%] bg-white z-10">

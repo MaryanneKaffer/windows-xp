@@ -62,7 +62,7 @@ export default function Desktop() {
           <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"97dvw"} mobileHeight={"58dvh"} />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"95dvw"} mobileHeight={"58dvh"} />
         </div>
       </section >
       {menuVisible && (
