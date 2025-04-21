@@ -47,19 +47,19 @@ export default function UserAccountsComponent() {
                     <p className="lg:text-2xl text-lg leading-[15px] opacity-70 mt-3 font-bold text-black">The picture you choose will appear on the <span className={`${currentAppearance.mainColor} cursor-pointer border-b border-dashed ${currentAppearance.border} `}>Welcome screen</span>.</p>
                     <div className="overflow-y-auto h-[36.5%] w-full lg:border-3 border-2 border-black mt-5 flex flex-wrap lg:gap-[7px] lg:p-2 p-1">
                         {userPictures.map((picture, index) => (
-                            <button onClick={() => setSelectedPicture(userPictures[index])} className={`${picture === selectedPicture ? `${currentAppearance.border}` : "border-transparent"} lg:border-5 border-3 cursor-default`}  >
-                                <Image key={picture.name} alt={picture.name} src={picture.picture} width={100} height={100} className="lg:w-[100px] w-[50px] border-transparent lg:border-3 border-2" />
+                            <button key={picture.name} onClick={() => setSelectedPicture(userPictures[index])} className={`${picture === selectedPicture ? `${currentAppearance.border}` : "border-transparent"} lg:border-5 border-3 cursor-default`}  >
+                                <Image alt={picture.name} src={picture.picture} width={100} height={100} className="lg:w-[100px] w-[50px] border-transparent lg:border-3 border-2" />
                             </button>
                         ))}
                     </div>
                     <div className="flex gap-1 w-auto place-items-center lg:my-3 my-1"><Image alt="Browse" src="/icons/searchIcon.png" width={30} height={30} className="lg:w-[30px] w-[20px]" /><p className={`${currentAppearance.mainColor} cursor-pointer lg:text-2xl text-lg`}>Browse for more pictures</p></div>
                     <div className={`w-full lg:h-[4px] h-[2px] bg-gradient-to-l ${currentAppearance.shadow1} opacity-50`}></div>
                     <div className="flex lg:gap-6 gap-2 w-full text-black lg:text-xl lg:mt-3 mt-2">
-                        <button disabled={!canApply} onClick={() => Apply()} className={`w-auto lg:px-12 px-4 ml-auto cursor-default h-[25px] whitespace-nowrap h-[25px] ${currentAppearance.buttonborder} border-2 rounded-sm leading-none ${!canApply ? "opacity-60" : "active:brightness-50"}`}>Change picture</button>
-                        <button disabled={!canApply} className={`w-auto lg:px-8 px-4 cursor-default h-[25px] ${currentAppearance.buttonborder} border-2 rounded-sm leading-none ${!canApply ? "opacity-60" : "active:brightness-50"}`}>Cancel</button>
+                        <button disabled={!canApply} onClick={() => Apply()} className={`w-auto lg:px-12 px-4 ml-auto cursor-default h-[25px] whitespace-nowrap ${currentAppearance.buttonborder} border-2 rounded-sm leading-none ${!canApply ? "opacity-60" : "active:brightness-50"}`}>Change picture</button>
+                        <button disabled={!canApply} onClick={() => setSelectedPicture(null)} className={`w-auto lg:px-8 px-4 cursor-default h-[25px] ${currentAppearance.buttonborder} border-2 rounded-sm leading-none ${!canApply ? "opacity-60" : "active:brightness-50"}`}>Cancel</button>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Appearance } from "@/config/data/windowData/displayPropertiesData/appearanceData";
+import { Appearance as Appearance } from "@/config/data/windowData/displayPropertiesData/appearanceData";
 
 interface Appearance {
     name: string;

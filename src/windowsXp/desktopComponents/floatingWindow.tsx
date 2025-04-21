@@ -9,7 +9,6 @@ import NotepadComponent from "./windowComponents/NotepadComponent";
 import questionIcon from "@/public/icons/questionIcon.png";
 import DesktopPropertiesComponent from "./windowComponents/desktopPropertiesComponent";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
-import CurriculumComponent from "./windowComponents/curriculumComponent";
 import UserAccountsComponent from "./windowComponents/userAccountsComponent";
 
 interface FloatingWindowProps {
