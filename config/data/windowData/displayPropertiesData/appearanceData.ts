@@ -15,6 +15,7 @@ export const Appearance = [
         shadow1: 'from-[rgb(21_55_128)] to-transparent',
         shadow2: 'from-[rgb(108_189_255)] to-transparent',
         mainColor: 'text-[#245DDA]',
+        taskbarButton: 'bg-winXpTaskbarButton',
     },
     {
         name: "Lollypop",

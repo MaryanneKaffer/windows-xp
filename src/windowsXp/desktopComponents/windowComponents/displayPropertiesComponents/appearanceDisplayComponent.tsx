@@ -16,6 +16,7 @@ interface Appearance {
     shadow2: string;
     light?: boolean;
     mainColor?: string;
+    taskbarButton?: string;
 }
 
 interface AppearanceDisplayComponentProps {

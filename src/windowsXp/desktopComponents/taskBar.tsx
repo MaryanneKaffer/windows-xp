@@ -16,9 +16,10 @@ interface WindowData {
     height?: string;
     mobileWidth?: string;
     mobileHeight?: string;
+    openWindows: { name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[];
 }
 
-export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight }: WindowData) {
+export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight, openWindows }: WindowData) {
     const [time, setTime] = useState(new Date());
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef(null);
@@ -32,8 +33,8 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
     }, []);
 
     return (
-        <section className={`w-full h-[48px] ${currentAppearance.taskbar} absolute bottom-0 left-0 flex`}>
-            <div ref={ref} className="w-full h-[48px] relative ">
+        <section className={`w-full h-[48px] ${currentAppearance.taskbar} absolute bottom-0 left-0 flex gap-3`}>
+            <div ref={ref} className="h-[48px] relative ">
                 <button type="button" onClick={() => setIsOpen(!isOpen)} id="startButton" className={`${currentAppearance.startbutton} h-full lg:w-[155px] w-[60px] rounded-r-2xl drop-shadow-[0px_10px_10px_rgba(0,0,0,0.9)] flex place-items-center gap-2 cursor-default ${isOpen ? "brightness-75" : ""}`}>
                     <Image src={LogoIcon.src} className="lg:ml-4 ml-[10px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]" width={30} height={30} alt="Windows XP Logo" />
                     <p className="lg:block hidden font-arial font-bold italic text-3xl drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]">start</p>
@@ -43,6 +44,14 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
                         <StartMenu setOpenWindows={setOpenWindows} name={name} icon={icon} type={type} fixedSize={fixedSize} width={width} height={height} setIsOpen={setIsOpen} mobileWidth={mobileWidth} mobileHeight={mobileHeight} />
                     </div>
                 )}
+            </div>
+            <div className="place-items-center flex w-full h-[48px] lg:gap-2 gap-1">
+                {openWindows.map((item, index) => (
+                    <button key={index} className={`${currentAppearance.taskbarButton} lg:w-[180px] w-auto cursor-default flex h-[35px] place-items-center rounded-sm gap-1 active:brightness-75`}>
+                        <Image src={item.icon} width={20} height={20} alt={item.name} className="lg:ml-2 mx-2" />
+                        <p className="text-xl lg:block hidden">{item.name}</p>
+                    </button>
+                ))}
             </div>
             <div className={`${currentAppearance.systemtray} lg:w-[210px] w-[100px] flex place-items-center ml-auto relative ${currentAppearance.light || currentAppearance.name === "Olive Green" && "text-black"}`}>
                 <div className={`bg-gradient-to-l ${currentAppearance.shadow1} w-[4px] h-[48px] absolute left-[-4px]`}></div>
