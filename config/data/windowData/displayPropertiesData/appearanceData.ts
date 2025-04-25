@@ -1,5 +1,6 @@
 import WindowsXp from "@/public/themes/windowsXp.png"
 import Zune from "@/public/themes/zune.png"
+import { color } from "framer-motion"
 
 export const Appearance = [
     {
@@ -15,7 +16,10 @@ export const Appearance = [
         shadow1: 'from-[rgb(21_55_128)] to-transparent',
         shadow2: 'from-[rgb(108_189_255)] to-transparent',
         mainColor: 'text-[#245DDA]',
-        taskbarButton: 'bg-winXpTaskbarButton',
+        color: 'bg-[#245DDA]',
+        clickTaskbarButton: "active:bg-[rgb(21_55_128)]",
+        activeTaskbarButton: "bg-[rgb(43_85_175)]",
+        taskbarButton: 'bg-[rgb(44_135,_219)]',
     },
     {
         name: "Lollypop",
@@ -30,6 +34,10 @@ export const Appearance = [
         shadow1: 'from-[rgb(151_71_156)] to-transparent',
         shadow2: 'from-[rgb(252_220_255)] to-transparent',
         mainColor: 'text-[rgb(243_114_255)]',
+        color: 'bg-[rgb(243_114_255)]',
+        clickTaskbarButton: "active:bg-[rgb(181_10_187)]",
+        activeTaskbarButton: "bg-[rgb(181_50_187)]",
+        taskbarButton: 'bg-[rgb(247_15_255)]',
     },
     {
         name: "Olive Green",

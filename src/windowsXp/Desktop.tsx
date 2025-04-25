@@ -18,6 +18,8 @@ export default function Desktop() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [screenSaving, setScreenSaving] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [activeWindow, setActiveWindow] = useState("");
+  const [isHidden, setIsHidden] = useState<string[]>([]);
   const [item, setItem] = useState("");
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -26,9 +28,18 @@ export default function Desktop() {
 
   const handleDoubleClick = (name: string, icon: StaticImageData, type: string, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
+      setActiveWindow(name);
       setOpenWindows((prev) => [...prev, { name, icon: icon.src, type, fixedSize, width, height, mobileHeight, mobileWidth }]);
     }
   }
+  const handleSetIsHidden = (windowName: string) => {
+    setIsHidden((prev) => [...prev, windowName]);
+    setActiveWindow("")
+  };
+
+  const handleShowWindow = (windowName: string) => {
+    setIsHidden((prev) => prev.filter((name) => name !== windowName));
+  };
 
   const openContextMenu = (event: React.MouseEvent, name: string, index?: number, appName?: string, appIcon?: StaticImageData,) => {
     event.preventDefault();
@@ -59,10 +70,12 @@ export default function Desktop() {
           ))}
         </div>
         {openWindows.map((window, index,) => (
-          <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""} mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} />
+          <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""}
+            mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} activeWindow={activeWindow} setActiveWindow={setActiveWindow} isHidden={isHidden} setIsHidden={handleSetIsHidden}
+          />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"95dvw"} mobileHeight={"58dvh"} openWindows={openWindows} />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"95dvw"} mobileHeight={"58dvh"} openWindows={openWindows} activeWindow={activeWindow} setActiveWindow={setActiveWindow} setIsHidden={handleShowWindow} />
         </div>
       </section >
       {menuVisible && (

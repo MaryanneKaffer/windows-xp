@@ -16,6 +16,8 @@ interface Appearance {
     shadow2: string;
     light?: boolean;
     mainColor?: string;
+    activeTaskbarButton?: string;
+    clickTaskbarButton?: string;
     taskbarButton?: string;
 }
 

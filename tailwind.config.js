@@ -27,7 +27,6 @@ const config = {
 				winXpSystemTray: 'linear-gradient(to bottom, rgb(108, 189, 255) 0%,rgb(45, 153, 255) 18%, rgb(45, 153, 255) 90%, rgb(27, 93, 155) 99%)',
 				winXpWindow: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
 				winXpStartmenu: 'linear-gradient(to bottom,rgb(159, 188, 255) 0%,#245DDA 1%,rgb(255, 255, 255) 50%, #245DDA 99%)',
-				winXpTaskbarButton: 'linear-gradient(to bottom,rgb(14, 61, 172) 0%,#245DDA 1%,rgb(30, 76, 177) 50%,rgb(24, 73, 179) 99%)',
 
 				//Zune Appearance
 				zuneTaskBar: 'linear-gradient(to bottom,rgb(75, 75, 75) 0%,rgb(75, 75, 75) 45%, rgb(53, 53, 53) 50%)',

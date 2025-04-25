@@ -17,9 +17,11 @@ interface WindowData {
     mobileWidth?: string;
     mobileHeight?: string;
     openWindows: { name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[];
+    activeWindow: string;
+    setActiveWindow: React.Dispatch<React.SetStateAction<string>>;
+    setIsHidden: (windowName: string) => void;
 }
-
-export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight, openWindows }: WindowData) {
+export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight, openWindows, activeWindow, setActiveWindow, setIsHidden }: WindowData) {
     const [time, setTime] = useState(new Date());
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef(null);
@@ -45,12 +47,12 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
                     </div>
                 )}
             </div>
-            <div className="place-items-center flex w-full h-[48px] lg:gap-2 gap-1">
+            <div className="place-items-center flex w-full h-[48px] lg:gap-[1px] gap-[2px]">
                 {openWindows.map((item, index) => (
-                    <button key={index} className={`${currentAppearance.taskbarButton} lg:w-[180px] w-auto cursor-default flex h-[35px] place-items-center rounded-sm gap-1 active:brightness-75`}>
+                    item.icon && (<button key={index} className={`${currentAppearance.taskbarButton} hover:brightness-125 lg:w-[200px] ${currentAppearance.clickTaskbarButton}  border-3 border-transparent w-auto cursor-default flex h-[35px] place-items-center rounded-sm gap-1 ${item.name === activeWindow && `${currentAppearance.activeTaskbarButton} border-b-transparent border-r-transparent border-l-black/20 border-t-black/20`}`} onClick={() => { setActiveWindow(item.name); setIsHidden(item.name); }}>
                         <Image src={item.icon} width={20} height={20} alt={item.name} className="lg:ml-2 mx-2" />
                         <p className="text-xl lg:block hidden">{item.name}</p>
-                    </button>
+                    </button>)
                 ))}
             </div>
             <div className={`${currentAppearance.systemtray} lg:w-[210px] w-[100px] flex place-items-center ml-auto relative ${currentAppearance.light || currentAppearance.name === "Olive Green" && "text-black"}`}>
