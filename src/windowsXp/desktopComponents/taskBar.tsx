@@ -49,7 +49,7 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
             </div>
             <div className="place-items-center flex w-full h-[48px] lg:gap-[1px] gap-[2px]">
                 {openWindows.map((item, index) => (
-                    item.icon && (<button key={index} className={`${currentAppearance.taskbarButton} hover:brightness-125 lg:w-[200px] ${currentAppearance.clickTaskbarButton}  border-3 border-transparent w-auto cursor-default flex h-[35px] place-items-center rounded-sm gap-1 ${item.name === activeWindow && `${currentAppearance.activeTaskbarButton} border-b-transparent border-r-transparent border-l-black/20 border-t-black/20`}`} onClick={() => { setActiveWindow(item.name); setIsHidden(item.name); }}>
+                    item.icon && (<button key={index} className={`${currentAppearance.taskbarButton} hover:brightness-125 lg:w-[200px] ${currentAppearance.clickTaskbarButton}  border-3 border-transparent w-auto cursor-default flex h-[35px] place-items-center rounded-sm gap-1 ${item.name === activeWindow ? `${currentAppearance.activeTaskbarButton} border-b-transparent border-r-transparent border-l-black/20 border-t-black/20` : ""}`} onClick={() => { setActiveWindow(item.name); setIsHidden(item.name); }}>
                         <Image src={item.icon} width={20} height={20} alt={item.name} className="lg:ml-2 mx-2" />
                         <p className="text-xl lg:block hidden">{item.name}</p>
                     </button>)

@@ -20,7 +20,7 @@ const config = {
 				startUp1: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 30%, rgb(29, 72, 165) 70%)',
 				startUp2: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 40%, rgb(29, 72, 165) 60%)',
 				startUp3: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 45%, rgb(29, 72, 165) 55%)',
-
+				
 				//Windows XP Appearance
 				winXpTaskBar: 'linear-gradient(to bottom,rgb(108, 152, 255) 0%, #245DDA 18%, #245DDA 90%, rgb(21, 55, 128) 99%)',
 				winXpStartButton: 'linear-gradient(to bottom, rgb(74, 201, 84) 0%, rgb(31, 184, 64) 18%, rgb(35, 128, 26) 90%)',
