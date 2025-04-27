@@ -19,7 +19,7 @@ export const Appearance = [
         color: 'bg-[#245DDA]',
         clickTaskbarButton: "active:bg-[rgb(21_15_128)]",
         activeTaskbarButton: "bg-[rgb(23_64_151)]",
-        taskbarButton: 'bg-[rgb(44_135,_219)]',
+        taskbarButton: 'bg-[rgb(44_135_219)]',
     },
     {
         name: "Lollypop",
@@ -91,7 +91,7 @@ export const Appearance = [
         mainColor: 'text-[rgb(148_150_175)]',
         color: 'bg-[rgb(148_150_175)]',
         clickTaskbarButton: "active:bg-[rgb(107_108_124)]",
-        activeTaskbarButton: "bg-[rgb(75_35_75)]",
+        activeTaskbarButton: "bg-[rgb(54_54_54)]",
         taskbarButton: 'bg-[rgb(75_75_75)]',     
     },
 ]
