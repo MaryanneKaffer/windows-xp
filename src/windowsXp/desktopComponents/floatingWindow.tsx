@@ -10,6 +10,7 @@ import questionIcon from "@/public/icons/questionIcon.png";
 import DesktopPropertiesComponent from "./windowComponents/desktopPropertiesComponent";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 import UserAccountsComponent from "./windowComponents/userAccountsComponent";
+import FolderComponent from "./windowComponents/folderComponent";
 
 interface FloatingWindowProps {
     name: string;
@@ -101,6 +102,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     {type === "notepad" && <NotepadComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}
+                    {type === "folder" && <FolderComponent name={name} />}
                 </div>
             </div>
         </div >
