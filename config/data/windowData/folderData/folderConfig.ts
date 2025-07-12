@@ -3,38 +3,38 @@ export const folderConfig = [
         name: "File and Folder Tasks",
         content: [{
             name: "Make a new folder",
-            img: "/icons/folderIcon.png",
+            img: "/icons/newFolderIcon.png",
         },
         {
             name: "Publish this folder to the Web",
-            img: "/icons/webIcon.png",
+            img: "/icons/publishIcon.png",
         },
         {
             name: "Share this folder",
-            img: "/icons/sendIcon.png",
+            img: "/icons/sharedFolderIcon.png",
         }]
     },
     {
         name: "Other Places",
         content: [{
             name: "Documents and Settings",
-            img: "/icons/desktopIcon.png",
+            img: "/icons/folderClosedIcon.png",
         },
         {
             name: "My Documents",
-            img: "/icons/computerIcon.png",
+            img: "/icons/myDocumentsIcon.png",
         },
         {
             name: "Shared Documents",
-            img: "/icons/pictureIcon.png",
+            img: "/icons/folderClosedIcon.png",
         },
         {
             name: "My Computer",
-            img: "/icons/musicIcon.png",
+            img: "/icons/myComputerIcon.png",
         },
         {
             name: "My network places",
-            img: "/icons/videoIcon.png",
+            img: "/icons/myNetworkIcon.png",
         }]
     },
     {

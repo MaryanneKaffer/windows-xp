@@ -49,10 +49,10 @@ export default function FolderComponent({ name }: { name: string }) {
                                 {option.name}
                                 <FaAngleDoubleUp size={18} className={`bg-white active:brightness-75 rounded-full border-[1px] border-gray-300 shadow-black shadow-lg ${currentAppearance.color}`} />
                             </span>
-                            {option.content && <span className="bg-white bg-opacity-70 flex flex-col gap-2 p-2 border-[2px] border-gray-300">
+                            {option.content && <span className="bg-white bg-opacity-70 flex flex-col p-2 border-[2px] border-gray-300">
                                 {option.content.map((item) => (
-                                    <button key={item.name} className="flex items-center gap-2 relative active:brightness-75 cursor-default ml-3 text-lg text-left leading-[1]">
-                                        <img draggable={false} src={item.img} className="size-6" />{item.name}
+                                    <button key={item.name} className="flex items-center gap-2 relative active:brightness-75 cursor-default ml-3 text-lg text-left leading-[0.8]">
+                                        <img draggable={false} src={item.img} className="size-5" />{item.name}
                                     </button>
                                 ))}
                             </span>}
