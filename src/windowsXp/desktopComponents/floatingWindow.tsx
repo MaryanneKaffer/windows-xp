@@ -98,7 +98,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     </div>
                     <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-full absolute top-[32px] left-[0px]`}></div>
                 </div>
-                <div className="lg:h-[100%] h-[90%] bg-white">
+                <div className="lg:h-[100%] h-[90%] bg-white overflow-hidden">
                     {type === "notepad" && <NotepadComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}
