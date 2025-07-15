@@ -11,6 +11,7 @@ import DesktopPropertiesComponent from "./windowComponents/desktopPropertiesComp
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 import UserAccountsComponent from "./windowComponents/userAccountsComponent";
 import FolderComponent from "./windowComponents/folderComponent";
+import RecycleBinComponent from "./windowComponents/recycleBinComponent";
 
 interface FloatingWindowProps {
     name: string;
@@ -102,7 +103,8 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     {type === "notepad" && <NotepadComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}
-                    {type === "folder" && <FolderComponent name={name} />}
+                    {type === "folder" && <FolderComponent name={name} icon={icon} />}
+                    {type === "recycleBin" && <RecycleBinComponent icon={icon} />}
                 </div>
             </div>
         </div >
