@@ -2,6 +2,7 @@ import recycleBinIcon from "@/public/icons/recycleBinIcon.png";
 import folderClosedIcon from "@/public//icons/folderClosedIcon.png";
 import notepadIcon from "@/public/icons/notepadIcon.png";
 import githubIcon from "@/public/logo/githubIcon.svg";
+import calculatorIcon from "@/public/icons/calculatorIcon.png";
 
 export const desktopData = [
     {
@@ -48,4 +49,12 @@ export const desktopData = [
         width: "20vw",
         height: "50vh",
     },
+    {
+        name: "Calculator",
+        type: "calculator",
+        icon: calculatorIcon,
+        fixedSize: false,
+        width: "21vw",
+        height: "42vh",
+    }
 ]
