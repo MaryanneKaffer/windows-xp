@@ -36,12 +36,6 @@ export const desktopData = [
         mobileHeight: "60vh",
     },
     {
-        name: "GitHub",
-        icon: githubIcon,
-        type: "link",
-        link: "https://github.com/MaryanneKaffer",
-    },
-    {
         name: "Notepad",
         type: "notepad",
         icon: notepadIcon,
@@ -54,7 +48,13 @@ export const desktopData = [
         type: "calculator",
         icon: calculatorIcon,
         fixedSize: false,
-        width: "21vw",
+        width: "19vw",
         height: "42vh",
-    }
+    },
+    {
+        name: "GitHub",
+        icon: githubIcon,
+        type: "link",
+        link: "https://github.com/MaryanneKaffer",
+    },
 ]
