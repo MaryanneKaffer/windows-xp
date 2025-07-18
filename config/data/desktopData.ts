@@ -50,6 +50,8 @@ export const desktopData = [
         fixedSize: false,
         width: "19vw",
         height: "42vh",
+        mobileWidth: "85vw",
+        mobileHeight: "55vh",
     },
     {
         name: "GitHub",
