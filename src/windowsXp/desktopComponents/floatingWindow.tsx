@@ -59,20 +59,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
     return (
         <div >
             <div ref={nodrag ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement" className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
-                lg:absolute absolute rounded-t-xl ${activeWindow === name ? "z-10" : ""}`}
-                style={isDesktop ? {
-                    width: isMaximized ? "100dvw" : width,
-                    height: isMaximized ? "94.7dvh" : height,
-                    top: isMaximized || nodrag ? 0 : position.top,
-                    left: isMaximized ? 0 : nodrag ? "20dvw" : position.left,
-                    position: "absolute",
-                } : {
-                    width: isMaximized ? "100dvw" : mobileWidth,
-                    height: isMaximized ? "94.7dvh" : mobileHeight,
-                    top: isMaximized ? 0 : position.top,
-                    left: isMaximized ? 0 : position.left,
-                    position: "absolute",
-                }}
+                lg:absolute absolute rounded-t-xl ${activeWindow === name ? "z-10" : ""} ${isDesktop ? `${width} ${height}` : `${mobileWidth} ${mobileHeight}`}`}
             >
                 <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !p-0 !cursor-default">
                     <div className="ml-2 flex">

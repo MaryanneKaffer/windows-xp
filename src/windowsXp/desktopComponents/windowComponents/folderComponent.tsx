@@ -22,13 +22,13 @@ export default function FolderComponent({ name, icon }: { name: string, icon: st
                 </span>
                 <div className="md:px-2 py-1 flex border-b border-[1px] border-gray-300 md:h-[40px] h-[30px]">
                     {folderOptions.map((option, index) => (
-                        <>
+                        <div key={option.name + index} className="flex items-center">
                             <button onMouseEnter={() => setisHoveringCnf(index)} onMouseLeave={() => setisHoveringCnf(-1)}
                                 className={`flex items-center md:gap-3 gap-1 p-1 relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
-                                <img draggable={false} src={option.img} className="md:size-6 size-4" /><p className="md:text-lg text-sm leading-[0.7]">{option.name}</p> {option.list && <span className="md:top-[50%] top-[85%] md:-ml-2 -ml-1 relative text-xl">🢓</span>}
+                                <img draggable={false} src={option.img} className="md:size-6 size-4" /><p className="md:text-lg text-sm leading-[0.7]">{option.name}</p> {option.list && <span className="mt-5 md:-ml-2 -ml-1 text-xl">🢓</span>}
                             </button>
                             {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1"></div>}
-                        </>
+                        </div>
                     ))}
                 </div>
                 <div className="flex md:text-lg text-sm border-b border-[1px] border-gray-300 px-2 gap-2 relative h-[30px] items-center">
