@@ -29,9 +29,8 @@ interface FloatingWindowProps {
     isHidden: string[];
     setIsHidden: (windowName: string) => void;
 }
-export default function FloatingWindow({ name, icon, type, onClose, fixedSize, width, height, mobileHeight, mobileWidth, activeWindow, setActiveWindow, isHidden, setIsHidden}: FloatingWindowProps) {
+export default function FloatingWindow({ name, icon, type, onClose, fixedSize, width, height, mobileHeight, mobileWidth, activeWindow, setActiveWindow, isHidden, setIsHidden }: FloatingWindowProps) {
     const targetRef = React.useRef(null);
-    const nodrag = name === "Curriculum" && window.innerWidth > 1024;
     const { moveProps } = useDraggable({ targetRef, canOverflow: true });
     const [position, setPosition] = useState({ top: -1000, left: -1000 });
     const [isMaximized, setIsMaximized] = useState(false);
@@ -58,8 +57,15 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
 
     return (
         <div >
-            <div ref={nodrag ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement" className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
-                lg:absolute absolute rounded-t-xl ${activeWindow === name ? "z-10" : ""} ${isDesktop ? `${width} ${height}` : `${mobileWidth} ${mobileHeight}`}`}
+            <div ref={isMaximized ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement" onDoubleClick={() => setIsMaximized(!isMaximized)}
+                className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
+                lg:absolute absolute ${activeWindow === name ? "z-10" : ""} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
+                style={{
+                    top: isMaximized ? 0 : position.top,
+                    left: isMaximized ? 0 : position.left,
+                    transform: isMaximized ? "none" : undefined,
+                    height: isMaximized ? `${window.innerHeight - 48}px` : undefined,
+                }}
             >
                 <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !p-0 !cursor-default">
                     <div className="ml-2 flex">
@@ -77,7 +83,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                                     <img draggable="false" src={minimizeIcon.src} alt="Minimize" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
                                 </button>
                                 <button type="button" className="!my-auto">
-                                    <img draggable="false" src={restoreIcon.src} alt="Maximize" /*onClick={() => setIsMaximized(!isMaximized)} */ className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                                    <img draggable="false" src={restoreIcon.src} alt="Maximize" onClick={() => setIsMaximized(!isMaximized)} className="w-[33px] h-[33px] cursor-default active:brightness-75" />
                                 </button>
                             </>
                         }
@@ -87,7 +93,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     </div>
                     <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-full absolute top-[32px] left-[0px]`}></div>
                 </div>
-                <div className="lg:h-[100%] h-[90%] bg-white overflow-hidden">
+                <div className="h-[100%] bg-white overflow-hidden">
                     {type === "notepad" && <NotepadComponent />}
                     {type === "displayProperties" && <DesktopPropertiesComponent onClose={onClose} />}
                     {type === "userAccounts" && <UserAccountsComponent />}

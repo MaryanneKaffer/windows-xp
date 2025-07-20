@@ -40,7 +40,7 @@ export default function RecycleBinComponent({ icon }: { icon: string }) {
                     </button>
                 </div>
             </div>
-            <div className="h-[78%] bg-white w-full shadow-md shadow-gray-400">
+            <div className="h-[98%] bg-white w-full shadow-md shadow-gray-400">
 
             </div>
             <span className="flex items-center md:text-lg text-sm text-black gap-2 px-1">

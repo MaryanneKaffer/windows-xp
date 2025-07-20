@@ -35,7 +35,7 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
     }, []);
 
     return (
-        <section className={`w-full h-[48px] ${currentAppearance.taskbar} absolute bottom-0 left-0 flex gap-3`}>
+        <section className={`w-full h-[48px] ${currentAppearance.taskbar} z-10 absolute bottom-0 left-0 flex gap-3`}>
             <div ref={ref} className="h-[48px] relative ">
                 <button type="button" onClick={() => setIsOpen(!isOpen)} id="startButton" className={`${currentAppearance.startbutton} h-full lg:w-[155px] w-[60px] rounded-r-2xl drop-shadow-[0px_10px_10px_rgba(0,0,0,0.9)] flex place-items-center gap-2 cursor-default ${isOpen ? "brightness-75" : ""}`}>
                     <Image src={LogoIcon.src} className="lg:ml-4 ml-[10px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]" width={30} height={30} alt="Windows XP Logo" />
