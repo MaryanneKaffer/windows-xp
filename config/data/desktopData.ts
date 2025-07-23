@@ -3,6 +3,7 @@ import folderClosedIcon from "@/public//icons/folderClosedIcon.png";
 import notepadIcon from "@/public/icons/notepadIcon.png";
 import githubIcon from "@/public/logo/githubIcon.svg";
 import calculatorIcon from "@/public/icons/calculatorIcon.png";
+import internetExplorerIcon from "@/public/icons/internetExplorerIcon.png";
 
 export const desktopData = [
     {
@@ -50,6 +51,16 @@ export const desktopData = [
         fixedSize: false,
         width: "w-[318px]",
         height: "w-[42vh]",
+        mobileWidth: "w-[85vw]",
+        mobileHeight: "h-fit",
+    },
+    {
+        name: "Internet Explorer",
+        type: "Internet",
+        icon: internetExplorerIcon,
+        fixedSize: false,
+        width: "w-[1000px]",
+        height: "h-[700px]",
         mobileWidth: "w-[85vw]",
         mobileHeight: "h-fit",
     },
