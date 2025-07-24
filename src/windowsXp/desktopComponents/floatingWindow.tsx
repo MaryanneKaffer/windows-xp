@@ -58,7 +58,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
 
     return (
         <div >
-            <div ref={isMaximized ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement" onDoubleClick={() => setIsMaximized(!isMaximized)}
+            <div ref={isMaximized ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement"
                 className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
                 lg:absolute absolute ${activeWindow === name ? "z-10" : ""} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
                 style={{
@@ -68,7 +68,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
                     height: isMaximized ? `${window.innerHeight - 48}px` : undefined,
                 }}
             >
-                <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !p-0 !cursor-default">
+                <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !p-0 !cursor-default" onDoubleClick={() => setIsMaximized(!isMaximized)}>
                     <div className="ml-2 flex">
                         {icon && <Image src={icon} draggable={false} alt={name} width={30} height={30} className="mr-2" />}
                         <p className={`font-arial font-bold text-lg !m-0 drop-shadow-[2px_3px_2px_rgba(0,0,0,0.9)] ${currentAppearance.light && "text-black"}`}>{name}</p>

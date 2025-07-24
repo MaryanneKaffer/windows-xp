@@ -1,6 +1,7 @@
 import { internetOptions } from "@/config/data/windowData/internetOptions"
 import { useState } from "react"
 import { currentAppearance } from "./desktopPropertiesComponent"
+import { IoMdFastforward } from "react-icons/io";
 
 export default function InternetComponent({ icon }: { icon: string }) {
     const options = ["File", "Edit", "View", "Favorites", "Tools", "Help"]
@@ -23,9 +24,9 @@ export default function InternetComponent({ icon }: { icon: string }) {
                         <>
                             <button onMouseEnter={() => setisHoveringCnf(index)} onMouseLeave={() => setisHoveringCnf(-1)}
                                 className={`flex justify-items-center items-center md:gap-2 gap-1 md:py-4 py-3 ${option.list || option.name ? "md:px-2 px-1" : "px-1"} relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
-                                <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7]">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 md:-ml-2 -ml-1 relative text-xl">🢓</span>}
+                                <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7]">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 -ml-0.5 relative text-xl">🢓</span>}
                             </button>
-                            {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1"></div>}
+                            {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1" />}
                         </>
                     ))}
                 </div>
@@ -38,6 +39,9 @@ export default function InternetComponent({ icon }: { icon: string }) {
                     <button className="flex items-center md:gap-2 gap-1 relative active:brightness-75 cursor-default mr-2">
                         <img draggable={false} src="/icons/GoIcon.png" className="md:size-6 size-4" /> Go
                     </button>
+                    <div className="h-full md:w-[2px] w-[1px] bg-gray-300 ml-2" />
+                    <p className="text-gray-500">Links</p>
+                    <IoMdFastforward size={14} className="mb-2"/>
                 </div>
             </div>
             <iframe
@@ -53,7 +57,7 @@ export default function InternetComponent({ icon }: { icon: string }) {
                         <span key={i} className="w-[40px] h-full "><div className="h-full my-1 w-[1px] bg-gray-300 justify-self-end"></div></span>
                     ))}
                 </span>
-                <span className="mr-[10%] ml-2 flex place-items-center gap-1">  
+                <span className="mr-[10%] ml-2 flex place-items-center gap-1">
                     <img draggable={false} src="/icons/internetShortcutIcon.png" className="size-4 mt-0.5" />
                     <p>Internet</p>
                 </span>

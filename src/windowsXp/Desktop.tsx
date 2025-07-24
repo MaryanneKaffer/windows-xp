@@ -49,7 +49,7 @@ export default function Desktop() {
     setActiveIndex(index!);
     setName(appName!);
     setIcon(appIcon!);
-    setType(type);
+    index !== undefined && setType(desktopData[index].type);
   };
 
   useClickAway(refStart, () => { setMenuVisible(false) });
@@ -60,16 +60,16 @@ export default function Desktop() {
       <ScreenSaverComponent screenSaving={screenSaving} setScreenSaving={setScreenSaving} />
       <section className="overflow-hidden bg-cover relative p-5 max-h-[100dvh] max-w-[100dvw]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : { width: "100dvw", height: "100dvh" }}>
         <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => openContextMenu(e, "Desktop")} />
-        <div ref={refApp} className="flex flex-col">
+        <div ref={refApp} className="grid sm:grid-cols-10 grid-cols-4 grid-flow-col sm:grid-rows-7 grid-rows-6 max-h-[90dvh]">
           {desktopData.map((item, index) => (
-            <button key={index} onContextMenu={(e) => openContextMenu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" draggable="true" onClick={() => setActiveIndex(index)}
+            <button key={index} onContextMenu={(e) => openContextMenu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" draggable={false} onClick={() => setActiveIndex(index)}
               onDoubleClick={() => { if (item.type === "link") { window.open(item.link, "_blank") } else { handleDoubleClick(item.name, item.icon, item.type, item.fixedSize, item.width, item.height, item.mobileHeight, item.mobileWidth) } }}>
-              <Image src={item.icon} alt={item.name} draggable="false" width={50} height={50} className={`drop-shadow-[2px_3px_2px_rgba(0,0,0,0.3)] mt-auto mb-1 ${activeIndex === index ? "brightness-75 contrast-125 inset-0 opacity-60 " : ""}`} />
+              <Image src={item.icon} alt={item.name} draggable="false" width={50} height={50} className={`drop-shadow-[2px_3px_2px_rgba(0,0,0,0.3)] mb-1 ${activeIndex === index ? "brightness-75 contrast-125 opacity-60 " : ""}`} />
               <p className={`text-xl text-center w-[100px] mb-auto drop-shadow-[2px_3px_2px_rgba(0,0,0,0.7)] leading-[0.8] ${activeIndex === index ? "bg-winXpBlue" : ""}`}>{item.name}</p>
             </button>
           ))}
         </div>
-        {openWindows.map((window, index,) => (
+        {openWindows.map((window) => (
           <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""}
             mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} activeWindow={activeWindow} setActiveWindow={setActiveWindow} isHidden={isHidden} setIsHidden={handleSetIsHidden}
           />
