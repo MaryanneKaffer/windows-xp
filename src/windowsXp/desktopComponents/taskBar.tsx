@@ -42,9 +42,7 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
                     <p className="lg:block hidden font-arial font-bold italic text-3xl drop-shadow-[2px_3px_2px_rgba(0,0,0,0.5)]">start</p>
                 </button>
                 {isOpen && (
-                    <div className={`${currentAppearance.startmenu} border-[2px] ${currentAppearance.border} rounded-b-none rounded-t-xl absolute p-0 lg:w-[550px] lg:h-[700px] lg:bottom-[48px] lg:left-0 w-screen h-[650px] bottom-[48px] left-0`}>
-                        <StartMenu setOpenWindows={setOpenWindows} name={name} icon={icon} type={type} fixedSize={fixedSize} width={width} height={height} setIsOpen={setIsOpen} mobileWidth={mobileWidth} mobileHeight={mobileHeight} />
-                    </div>
+                    <StartMenu setOpenWindows={setOpenWindows} name={name} icon={icon} type={type} fixedSize={fixedSize} width={width} height={height} setIsOpen={setIsOpen} mobileWidth={mobileWidth} mobileHeight={mobileHeight} />
                 )}
             </div>
             <div className="place-items-center flex w-full h-[48px] lg:gap-[1px] gap-[2px]">

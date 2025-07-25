@@ -6,6 +6,8 @@ import logOffIcon from "@/public/icons/logOffIcon.png";
 import turnOffIcon from "@/public/icons/turnOffIcon.png";
 import { currentAppearance } from "./windowComponents/desktopPropertiesComponent";
 import { currentUserPicture } from "./windowComponents/userAccountsComponent";
+import { useState } from "react";
+import TurnOffBox from "./turnOff/turnOffBox";
 
 interface WindowData {
   setOpenWindows: React.Dispatch<React.SetStateAction<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>>;
@@ -21,13 +23,16 @@ interface WindowData {
 }
 
 export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize, width, height, setIsOpen, mobileWidth, mobileHeight }: WindowData) {
+  const [isBoxOpen, setBoxOpen] = useState(false)
   const handleUserMenu = () => {
     setOpenWindows((prevWindows) => [...prevWindows, { name, icon, type, fixedSize, width, height, mobileWidth, mobileHeight }]);
     setIsOpen(false);
   };
 
+  if (isBoxOpen) return <TurnOffBox/>;
+
   return (
-    <>
+    <div className={`${currentAppearance.startmenu} border-[2px] ${currentAppearance.border} rounded-b-none rounded-t-xl absolute p-0 lg:w-[550px] lg:h-[700px] lg:bottom-[48px] lg:left-0 w-screen h-[650px] bottom-[48px] left-0`}>
       <section className={`flex place-items-center text-3xl ${currentAppearance.light && "text-black"}`}>
         <button onClick={() => handleUserMenu()} className="cursor-pointer">
           <Image src={currentUserPicture} alt='User' width={100} height={100} className="lg:w-[90px] w-[90px] border-3 border-white rounded-lg bg-green-700 m-3" draggable="false" />
@@ -78,17 +83,18 @@ export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize,
         </div>
       </section >
 
-      <section className={`flex place-items-center text-[22px] h-[53px] mr-5 ${currentAppearance.light && "text-black"}`}>
-        <button className="active:brightness-75 flex place-items-center ml-auto cursor-default">
-          <Image src={logOffIcon.src} alt='Log Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />
+      <section className={`flex place-items-center gap-4 text-[22px] h-[53px] ${currentAppearance.light && "text-black"}`}>
+        <button className={`flex ml-auto place-items-center cursor-default hover:brightness-75 bg-opacity-0 hover:bg-opacity-100 h-11 pr-2 ${currentAppearance.color} hover-text-white`}>
+          <Image src={logOffIcon.src} alt='Log Off' width={35} height={35} className="border-1 border-white rounded-md mr-3 ml-1" draggable="false" />
           <p>Log Off</p>
         </button>
-        <button className="active:brightness-75 flex place-items-center cursor-default">
-          <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md m-3" draggable="false" />
+        <button className={`flex place-items-center cursor-default hover:brightness-75 bg-opacity-0 hover:bg-opacity-100 h-11 pr-2 ${currentAppearance.color} hover-text-white`}
+          onClick={() => setBoxOpen(true)}>
+          <Image src={turnOffIcon.src} alt='Turn Off' width={35} height={35} className="border-1 border-white rounded-md mr-3 ml-1" draggable="false" />
           <p>Turn Off Computer</p>
         </button>
       </section>
       <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-[550px] fixed bottom-[-4px] left-[-78px]`}></div>
-    </>
+    </div>
   );
 }
