@@ -56,8 +56,8 @@ export default function TaskBar({ setOpenWindows, name, icon, type, fixedSize, w
             <div className={`${currentAppearance.systemtray} lg:w-[210px] w-[100px] flex place-items-center ml-auto relative ${currentAppearance.light || currentAppearance.name === "Olive Green" && "text-black"}`}>
                 <div className={`bg-gradient-to-l ${currentAppearance.shadow1} w-[4px] h-[48px] absolute left-[-4px]`}></div>
                 <div className={`bg-gradient-to-r ${currentAppearance.shadow2} w-[4px] h-[48px] absolute left-[0px]`}></div>
-                <div className="flex w-full place-items-center gap-1 ml-5">
-                    {SystemTray.map((item, index) => (
+                <div className="flex w-full place-items-center md:gap-1 md:ml-5 ml-1">
+                    {SystemTray.map((item) => (
                         <button key={item.name} className="h-full size-[25px] active:brightness-75 place-items-center rounded-full cursor-default lg:block hidden">
                             <Image src={item.icon} className="w-[25px] h-[25px]" alt={item.name || "icon"} />
                         </button>

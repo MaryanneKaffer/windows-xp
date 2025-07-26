@@ -27,7 +27,8 @@ export default function Desktop() {
   const [type, setType] = useState("");
   const refStart = useRef(null);
   const refApp = useRef(null);
-  const { turnOff } = useTurnOff();
+  const { turnOff, setTurnOff } = useTurnOff();
+  const [showOff, setShowOff] = useState(false)
 
   const handleDoubleClick = (name: string, icon: StaticImageData, type: string, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
@@ -58,7 +59,14 @@ export default function Desktop() {
   useClickAway(refStart, () => { setMenuVisible(false) });
   useClickAway(refApp, () => { setActiveIndex(null) });
 
-  if (turnOff) return <OffScreen />;
+  useEffect(() => {
+    if (turnOff) {
+      setTurnOff(false)
+      setShowOff(true)
+    }
+  }, [turnOff, setTurnOff])
+
+  if (showOff) return <OffScreen />
 
   return (
     <div className="h-[100dvh] w-[100dvw] place-items-center justify-center flex flex-col">

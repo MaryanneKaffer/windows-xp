@@ -43,7 +43,7 @@ export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize,
       <section className="flex relative">
         <div className="bg-gradient-to-r from-transparent via-orange-400 to-transparent h-[3px] lg:w-[643px] w-[400px] absolute lg:left-[-95px] left-0 "></div>
         <div className="bg-white w-full lg:h-[530px] h-[480px] pt-2">
-          {leftColumn.map((item, index) => (
+          {leftColumn.map((item) => (
             <div key={item.name} >
               <button className="items-center p-3 flex w-full h-[55px] lg:text-2xl text-[20px] cursor-default hover:bg-winXpBlue group">
                 <Image src={item.icon} alt={item.name} width={40} height={40} className="drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)]" draggable="false" />
@@ -68,7 +68,7 @@ export default function StartMenu({ setOpenWindows, name, icon, type, fixedSize,
         </div >
 
         <div className="bg-[rgb(205_220_255)] w-full lg:h-[530px] h-[480px] border-l-[2px] border-[rgb(159_188_255)]">
-          {rightColumn.map((item, index) => (
+          {rightColumn.map((item) => (
             <div key={item.name} >
               <button className="items-center flex w-full lg:h-[45px] h-[40px] cursor-default hover:bg-winXpBlue group">
                 <Image src={item.icon} alt={item.name} width={35} height={35} className="lg:size-[35px] size-[32px] drop-shadow-[2px_3px_2px_rgba(0,0,0,0.4)] ml-3" draggable="false" />
