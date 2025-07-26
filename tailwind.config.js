@@ -15,6 +15,7 @@ const config = {
 				default: 'url("/cursor/default.cur"), auto',
 				pointer: 'url("/cursor/pointer.cur"), auto',
 				text: 'url("/cursor/beam_i.cur"), auto',
+				wait: 'url("/cursor/wait_i.cur"), auto'
 			},
 			backgroundImage: {
 				startUp1: 'linear-gradient(to bottom, rgb(29, 72, 165),rgb(186, 195, 216) 30%, rgb(29, 72, 165) 70%)',

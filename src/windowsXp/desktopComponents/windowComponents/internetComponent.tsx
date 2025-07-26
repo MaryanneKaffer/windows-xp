@@ -21,13 +21,13 @@ export default function InternetComponent({ icon }: { icon: string }) {
                 </span>
                 <div className="md:px-2 py-1 flex border-b border-[1px] border-gray-300 md:h-[40px] h-[30px]">
                     {internetOptions.map((option, index) => (
-                        <>
+                        <span key={index} className=" flex place-items-center">
                             <button onMouseEnter={() => setisHoveringCnf(index)} onMouseLeave={() => setisHoveringCnf(-1)}
                                 className={`flex justify-items-center items-center md:gap-2 gap-1 md:py-4 py-3 ${option.list || option.name ? "md:px-2 px-1" : "px-1"} relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
-                                <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7]">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 -ml-0.5 relative text-xl">🢓</span>}
+                                <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7] md:flex hidden">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 -ml-0.5 relative text-xl">🢓</span>}
                             </button>
                             {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1" />}
-                        </>
+                        </span>
                     ))}
                 </div>
                 <div className="flex md:text-lg text-sm border-b border-[1px] border-gray-300 px-2 gap-2 relative h-[30px] items-center">
@@ -41,13 +41,13 @@ export default function InternetComponent({ icon }: { icon: string }) {
                     </button>
                     <div className="h-full md:w-[2px] w-[1px] bg-gray-300 ml-2" />
                     <p className="text-gray-500">Links</p>
-                    <IoMdFastforward size={14} className="mb-2"/>
+                    <IoMdFastforward size={14} className="mb-2" />
                 </div>
             </div>
             <iframe
                 src="https://web.archive.org/web/20120331235755/https://www.google.com"
                 title="Google"
-                className="h-full w-full shadow-md shadow-gray-400"
+                className="md:h-full md:w-full w-full h-[400px] shadow-md shadow-gray-400"
                 sandbox="allow-scripts"
             />
             <div className="w-full px-1 h-[4%] flex text-black text-lg place-items-center my-auto">

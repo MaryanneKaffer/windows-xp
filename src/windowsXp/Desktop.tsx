@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { useClickAway } from "react-use";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { currentWallpaper } from "./desktopComponents/windowComponents/desktopPropertiesComponent"
 import FloatingWindow from "./desktopComponents/floatingWindow";
 import { ContextMenu } from "./desktopComponents/contextMenu";
@@ -10,6 +10,8 @@ import { desktopData } from "@/config/data/desktopData";
 import TaskBar from "./desktopComponents/taskBar";
 import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 import userAccountsIcon from "@/public/icons/userAccountsIcon.png";
+import { useTurnOff } from "./desktopComponents/turnOff/turnOffContext";
+import OffScreen from "./desktopComponents/turnOff/offScreen";
 
 export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
@@ -25,6 +27,7 @@ export default function Desktop() {
   const [type, setType] = useState("");
   const refStart = useRef(null);
   const refApp = useRef(null);
+  const { turnOff } = useTurnOff();
 
   const handleDoubleClick = (name: string, icon: StaticImageData, type: string, fixedSize?: boolean, width?: string, height?: string, mobileHeight?: string, mobileWidth?: string) => {
     if (!openWindows.some((win) => win.name === name)) {
@@ -54,6 +57,8 @@ export default function Desktop() {
 
   useClickAway(refStart, () => { setMenuVisible(false) });
   useClickAway(refApp, () => { setActiveIndex(null) });
+
+  if (turnOff) return <OffScreen />;
 
   return (
     <div className="h-[100dvh] w-[100dvw] place-items-center justify-center flex flex-col">
