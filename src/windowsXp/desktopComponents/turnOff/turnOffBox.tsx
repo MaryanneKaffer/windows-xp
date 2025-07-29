@@ -11,7 +11,7 @@ export default function TurnOffBox() {
         if (loading) {
             const timeout = setTimeout(() => {
                 setTurnOff(true);
-            }, 6000);
+            }, 3000);
             return () => clearTimeout(timeout);
         }
     }, [loading, setTurnOff]);

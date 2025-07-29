@@ -57,10 +57,10 @@ export default function CalculatorComponent() {
                 <input disabled value={calcInput ? calcInput : 0} type="text" className={`${currentAppearance.border} px-2 select-none text-black md:text-2xl border-[2px] bg-white text-right w-full
                 text-xl`} />
                 <span className="flex flex-col gap-2 px-1 h-full mt-2">
-                    <span className="justify-between flex w-full h-fit items-center">
-                        <span className="md:size-10 size-8 flex md:mr-2.5 md:ml-1.5 mr-4 ml-0.5"><div className="md:size-9 size-8 my-auto border-t-[3px] border-l-[3px] border-b-[2px] border-r-[2px] border-b-white border-r-white border-gray-500" /></span>
+                    <span className="flex gap-1 w-full h-fit items-center">
+                        <span className="md:size-11 size-8 flex md:mr-1.5 md:ml-1.5 mr-4 ml-0.5"><div className="md:size-9 size-8 my-auto border-t-[3px] border-l-[3px] border-b-[2px] border-r-[2px] border-b-white border-r-white border-gray-500" /></span>
                         {topInputs.map((input) => (
-                            <button key={input.output} className={`${currentAppearance.border} group font-bold cursor-default border-[2px] rounded-md bg-white text-red-900 text-xl md:w-[26%] w-[75px] mdh-11 flex items-center justify-center`}
+                            <button key={input.output} className={`${currentAppearance.border} group font-bold cursor-default border-[2px] rounded-md bg-white text-red-900 text-xl md:w-[26.5%] w-[75px] mdh-11 flex items-center justify-center`}
                                 onClick={() => Functions(input.output)}>
                                 <p className="md:text-2xl text-xl group-hover:border-orange-300 border-[3px] border-transparent w-full h-full group-active:border-transparent">{input.output}</p>
                             </button>
@@ -69,7 +69,7 @@ export default function CalculatorComponent() {
                     <span className="justify-between flex flex-wrap w-full items-center md:mt-2 mt-1">
                         {bottomInputs.map((input) => (
                             <button key={input.output} className={`${currentAppearance.border} group font-bold cursor-default border-[2px] rounded-md bg-white ${input.color ? "text-red-900" : "text-blue-900"} 
-                        w-[40px] md:h-11 flex items-center justify-center ${input.space && "mr-2"} mb-2`}
+                        md:w-[45px] w-[40px] md:h-11 flex items-center justify-center ${input.space && "mr-1.5"} mb-2`}
                                 onClick={() => {
                                     if (calcInput === "Error") {
                                         setCalcInput(input.output);

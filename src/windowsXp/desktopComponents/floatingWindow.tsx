@@ -54,6 +54,15 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, w
         setPosition({ top: randomTop, left: randomLeft });
     }, []);
 
+    const hasPlayedSound = React.useRef(false);
+    useEffect(() => {
+        if (!hasPlayedSound.current) {
+            const audio = new Audio("/audio/navigationStart.mp3");
+            audio.play()
+            hasPlayedSound.current = true;
+        }
+    }, []);
+
     const isDesktop = typeof window !== "undefined" && window.innerWidth > 1024;
 
     return (

@@ -11,7 +11,7 @@ import TaskBar from "./desktopComponents/taskBar";
 import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 import userAccountsIcon from "@/public/icons/userAccountsIcon.png";
 import { useTurnOff } from "./desktopComponents/turnOff/turnOffContext";
-import OffScreen from "./desktopComponents/turnOff/offScreen";
+import ShutdownScreen from "./desktopComponents/turnOff/shutDownScreen";
 
 export default function Desktop() {
   const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
@@ -66,7 +66,7 @@ export default function Desktop() {
     }
   }, [turnOff, setTurnOff])
 
-  if (showOff) return <OffScreen />
+  if (showOff) return <ShutdownScreen />
 
   return (
     <div className="h-[100dvh] w-[100dvw] place-items-center justify-center flex flex-col">
