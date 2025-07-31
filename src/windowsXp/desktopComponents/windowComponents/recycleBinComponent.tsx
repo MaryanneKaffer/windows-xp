@@ -20,13 +20,13 @@ export default function RecycleBinComponent({ icon }: { icon: string }) {
                 </span>
                 <div className="md:px-2 py-1 flex border-b border-[1px] border-gray-300 md:h-[40px] h-[30px]">
                     {folderOptions.map((option, index) => (
-                        <>
+                        <span key={index} className="flex items-center">
                             <button onMouseEnter={() => setisHoveringCnf(index)} onMouseLeave={() => setisHoveringCnf(-1)}
                                 className={`flex justify-items-center items-center md:gap-2 gap-1 md:py-4 py-3 ${option.list || option.name ? "md:px-2 px-1" : "px-1"} relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
                                 <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7]">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 -ml-0.5 relative text-xl">🢓</span>}
                             </button>
                             {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1" />}
-                        </>
+                        </span>
                     ))}
                 </div>
                 <div className="flex md:text-lg text-sm border-b border-[1px] border-gray-300 px-2 gap-2 relative h-[30px] items-center">

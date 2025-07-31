@@ -43,6 +43,8 @@ export const desktopData = [
         fixedSize: false,
         width: "w-[20vw]",
         height: "h-[50vh]",
+        mobileWidth: "w-[85vw]",
+        mobileHeight: "h-fit",
     },
     {
         name: "Calculator",

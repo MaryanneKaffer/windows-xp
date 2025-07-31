@@ -88,7 +88,7 @@ export default function Desktop() {
           />
         ))}
         <div onContextMenu={(e) => openContextMenu(e, "Task Bar")}>
-          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"70%"} height={"90%"} mobileWidth={"95dvw"} mobileHeight={"58dvh"} openWindows={openWindows} activeWindow={activeWindow} setActiveWindow={setActiveWindow} setIsHidden={handleShowWindow} />
+          <TaskBar setOpenWindows={setOpenWindows} name={"User Accounts"} icon={userAccountsIcon.src} type={"userAccounts"} fixedSize={false} width={"w-[64dvw]"} height={"h-[80dvh]"} mobileWidth={"w-[95dvw]"} mobileHeight={"h-[58dvh]"} openWindows={openWindows} activeWindow={activeWindow} setActiveWindow={setActiveWindow} setIsHidden={handleShowWindow} />
         </div>
       </section >
       {menuVisible && (
