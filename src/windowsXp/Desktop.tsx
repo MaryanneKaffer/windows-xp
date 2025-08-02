@@ -72,7 +72,7 @@ export default function Desktop() {
     <div className="h-[100dvh] w-[100dvw] place-items-center justify-center flex flex-col">
       <ScreenSaverComponent screenSaving={screenSaving} setScreenSaving={setScreenSaving} />
       <section className="overflow-hidden bg-cover relative p-5 max-h-[100dvh] max-w-[100dvw]" style={screen.width > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : { width: "100dvw", height: "100dvh" }}>
-        <Image src={currentWallpaper} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => openContextMenu(e, "Desktop")} />
+        <Image src={currentWallpaper} draggable={false} alt="wallpaper" width={2000} height={2000} className="w-full h-full absolute bottom-0 right-0 object-cover" onContextMenu={(e) => openContextMenu(e, "Desktop")} />
         <div ref={refApp} className="grid sm:grid-cols-10 grid-cols-4 grid-flow-col sm:grid-rows-7 grid-rows-6 max-h-[90dvh]">
           {desktopData.map((item, index) => (
             <button key={index} onContextMenu={(e) => openContextMenu(e, "App", index, item.name, item.icon)} className="w-[90px] h-[100px] place-items-center flex flex-col cursor-default" draggable={false} onClick={() => setActiveIndex(index)}

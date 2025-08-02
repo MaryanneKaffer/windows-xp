@@ -15,29 +15,53 @@ interface Appearance {
     disabled?: boolean; shadow1: string; shadow2: string; light?: boolean; mainColor?: string; activeTaskbarButton?: string; color: string; clickTaskbarButton?: string; taskbarButton?: string
 }
 
-export let currentWallpaper: string = Wallpapers[3].wallpaper;
-export let currentAppearance: Appearance = Appearance[0];
-export let currentScreenSaver: string = ScreenSavers[2].screenSaver || "";
+export let currentWallpaper: string = typeof window !== "undefined" && localStorage.getItem("wallpaper")
+    ? JSON.parse(localStorage.getItem("wallpaper")!)
+    : Wallpapers[3].wallpaper;
+export let currentAppearance: Appearance = typeof window !== "undefined" && localStorage.getItem("appearance")
+    ? JSON.parse(localStorage.getItem("appearance")!)
+    : Appearance[0];
+export let currentScreenSaver: string = typeof window !== "undefined" && localStorage.getItem("screenSaver")
+    ? JSON.parse(localStorage.getItem("screenSaver")!)
+    : ScreenSavers[2].screenSaver;
 export let currentResolution: string[] = ["1920", "1080"];
 
 export default function DesktopPropertiesComponent({ onClose }: { onClose: () => void }) {
     const [hoveringIndex, setHoveringIndex] = useState<number | null>(null);
     const [activeIndex, setActiveIndex] = useState<[number, string] | null>([0, "Themes"]);
-    const [selectedAppearance, setSelectedAppearance] = useState<Appearance>(currentAppearance);
-    const [selectedWallpaper, setSelectedWallpaper] = useState("");
-    const [selectedScreenSaver, setSelectedScreenSaver] = useState("");
+    const [selectedWallpaper, setSelectedWallpaper] = useState(() => {
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("wallpaper");
+            if (saved) { return JSON.parse(saved) }
+        } return currentWallpaper;
+    });
+    const [selectedScreenSaver, setSelectedScreenSaver] = useState(() => {
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("screenSaver");
+            if (saved) { return JSON.parse(saved) }
+        } return currentScreenSaver;
+    });;
     const [selectedResolution, setSelectedResolution] = useState<string[]>(currentResolution);
+    const [selectedAppearance, setSelectedAppearance] = useState<Appearance>(() => {
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("appearance");
+            if (saved) { return JSON.parse(saved) }
+        } return currentAppearance;
+    });
 
     const Apply = () => {
         if (selectedWallpaper) {
             currentWallpaper = selectedWallpaper;
+            localStorage.setItem("wallpaper", JSON.stringify(selectedWallpaper));
             setSelectedWallpaper("");
         }
         if (selectedAppearance) {
             currentAppearance = selectedAppearance;
+            localStorage.setItem("appearance", JSON.stringify(selectedAppearance));
         }
         if (selectedScreenSaver) {
             currentScreenSaver = selectedScreenSaver;
+            localStorage.setItem("screenSaver", JSON.stringify(selectedScreenSaver));
             setSelectedScreenSaver("");
         }
         if (selectedResolution) {

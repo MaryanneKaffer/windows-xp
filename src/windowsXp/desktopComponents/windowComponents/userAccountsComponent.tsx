@@ -7,7 +7,12 @@ import { FaAngleDoubleUp } from "react-icons/fa";
 export let currentUserPicture: string = userPictures[Math.floor(Math.random() * userPictures.length)].picture;
 
 export default function UserAccountsComponent() {
-    const [selectedPicture, setSelectedPicture] = useState<{ picture: string; name: string } | null>(null);
+    const [selectedPicture, setSelectedPicture] = useState<{ picture: string; name: string } | null>(() => {
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("userPicture");
+            if (saved) { return JSON.parse(saved) }
+        } return currentUserPicture;
+    });;
     const details = [
         { name: "Current Picture", content: <img src={currentUserPicture} className="md:size-32 size-12" /> },
         { name: "Related Tasks", content: "Change the computer theme" },
@@ -16,19 +21,20 @@ export default function UserAccountsComponent() {
     const Apply = () => {
         if (selectedPicture) {
             currentUserPicture = selectedPicture.picture;
+            localStorage.setItem("userPicture", JSON.stringify(selectedPicture));
             setSelectedPicture(null);
         }
     }
     const canApply = selectedPicture && selectedPicture.picture !== currentUserPicture || false;
     return (
         <section className="w-full h-full">
-            <div className="w-full lg:h-[6%] bg-yellow-100 flex place-items-center px-2 text-black">
-                <button className="cursor-default flex place-items-center"><Image alt="Back" src="/icons/backIcon.png" width={35} height={30} className="lg:w-[35px] w-[20px] " />
-                    <p className="self-center mx-2 lg:text-2xl text-xl">Back</p>
+            <div className="w-full lg:h-[6%] bg-yellow-100 bg-opacity-75 flex place-items-center px-2 text-black">
+                <button className="cursor-default flex place-items-center"><img alt="Back" src="/icons/backIcon.png" className="lg:w-[25px] w-[20px] " />
+                    <p className="self-center mx-2 text-xl">Back</p>
                 </button>
-                <button className="ml-3 cursor-default flex"><Image alt="Forward" src="/icons/forwardIcon.png" width={35} height={30} className="lg:w-[35px] w-[20px] filter grayscale"></Image></button>
-                <Image alt="Home" src="/icons/userAccountsIcon.png" width={35} height={30} className="lg:w-[35px] w-[20px] ml-7" />
-                <p className="self-center mx-2 lg:text-2xl text-xl">Home</p>
+                <button className="ml-3 cursor-default flex"><img alt="Forward" src="/icons/forwardIcon.png" className="lg:w-[25px] w-[20px] filter grayscale" /></button>
+                <img alt="Home" src="/icons/userAccountsIcon.png" className="lg:w-[25px] w-[20px] ml-3" />
+                <p className="self-center mx-2 text-xl">Home</p>
             </div>
             <div className="flex w-full h-full">
                 <div className="flex h-full">
