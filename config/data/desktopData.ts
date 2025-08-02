@@ -51,7 +51,7 @@ export const desktopData = [
         type: "calculator",
         icon: calculatorIcon,
         fixedSize: false,
-        width: "w-[350px]",
+        width: "w-[348px]",
         height: "w-[42vh]",
         mobileWidth: "w-[85vw]",
         mobileHeight: "h-fit",

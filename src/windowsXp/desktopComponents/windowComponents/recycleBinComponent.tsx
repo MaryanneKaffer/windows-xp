@@ -13,7 +13,7 @@ export default function RecycleBinComponent({ icon }: { icon: string }) {
                 <span className="border-b border-[1px] border-gray-300">
                     {options.map((option, index) => (
                         <button onMouseEnter={() => setisHoveringOpt(index)} onMouseLeave={() => setisHoveringOpt(-1)} key={option}
-                            className={`${isHoveringOpt === index && `${currentAppearance.color} text-white`} md:px-3 px-2`}>
+                            className={`${isHoveringOpt === index && `${currentAppearance.color} text-white`} md:px-3 px-2 cursor-default`}>
                             {option}
                         </button>
                     ))}
@@ -22,7 +22,7 @@ export default function RecycleBinComponent({ icon }: { icon: string }) {
                     {folderOptions.map((option, index) => (
                         <span key={index} className="flex items-center">
                             <button onMouseEnter={() => setisHoveringCnf(index)} onMouseLeave={() => setisHoveringCnf(-1)}
-                                className={`flex justify-items-center items-center md:gap-2 gap-1 md:py-4 py-3 ${option.list || option.name ? "md:px-2 px-1" : "px-1"} relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
+                                className={`flex justify-items-center items-center md:h-9 h-6 md:gap-2 gap-1 md:py-4 py-3 ${option.list || option.name ? "md:px-2 px-1" : "px-1"} relative active:brightness-75 cursor-default ${isHoveringCnf === index && `${currentAppearance.color} text-white`}`}>
                                 <img draggable={false} src={option.img} className="md:size-6 size-4" />{option.name && <p className="md:text-lg text-sm leading-[0.7]">{option.name}</p>} {option.list && <span className="sm:flex hidden md:mt-5 mt-4 -ml-0.5 relative text-xl">🢓</span>}
                             </button>
                             {option.divider && <div className="h-full md:w-[2px] w-[1px] bg-gray-300 mx-1" />}

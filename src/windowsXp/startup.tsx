@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useAudioStore } from "@/public/audio/audioStore";
 import Desktop from "./Desktop";
-import { currentResolution } from "./desktopComponents/windowComponents/desktopPropertiesComponent";
 
 export default function Startup() {
   const [screen, setScreen] = useState<"startup" | "welcome" | "desktop">("startup");
@@ -24,7 +23,7 @@ export default function Startup() {
   return (
     <>
       {screen === "startup" && (
-        <section className="h-[100dvh] w-[100dvw] grid grid-rows-[1fr_auto] cursor-none" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
+        <section className="h-[100dvh] w-[100dvw] grid grid-rows-[1fr_auto] cursor-none">
           <div className="flex flex-col self-center mx-auto">
             <Image src="/logo/winXpLogo.png" alt="Windows XP Logo" className="lg:w-[450px] mb-10" width={300} height={200} />
             <div className="border-white border-3 rounded-lg p-[3px] w-72 overflow-hidden mx-auto">
@@ -39,11 +38,10 @@ export default function Startup() {
         </section>
       )}
       {screen === "welcome" && (
-        <section className="cursor-none h-[100dvh] w-[100dvw]" style={window.innerWidth > 1024 ? { width: `${currentResolution[0]}px`, height: `${currentResolution[1]}px` } : {}}>
+        <section className="cursor-none h-[100dvh] w-[100dvw]">
           <div className="bg-[#00309C] h-[100dvh] w-full flex relative">
             <div className="h-[3px] flex lg:w-[1000px] w-[400px] fixed top-[12.5dvh] lg:right-[580px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
             <div className="h-[3px] flex lg:w-[1000px] w-[400px] fixed bottom-[12.5dvh] lg:right-[580px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
-
             <div className="bg-[#5A7EDC] h-[75dvh] w-full self-center flex items-center justify-center">
               <p className="lg:text-7xl text-4xl font-arial font-bold ml-[20dvh] italic drop-shadow-[4px_4px_1px_rgba(0,0,255,0.3)]">welcome</p>
             </div>
