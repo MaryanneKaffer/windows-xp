@@ -7,12 +7,7 @@ import { FaAngleDoubleUp } from "react-icons/fa";
 export let currentUserPicture: string = userPictures[Math.floor(Math.random() * userPictures.length)].picture;
 
 export default function UserAccountsComponent() {
-    const [selectedPicture, setSelectedPicture] = useState<{ picture: string; name: string } | null>(() => {
-        if (typeof window !== "undefined") {
-            const saved = localStorage.getItem("userPicture");
-            if (saved) { return JSON.parse(saved) }
-        } return currentUserPicture;
-    });;
+    const [selectedPicture, setSelectedPicture] = useState<{ picture: string; name: string } | null>()
     const details = [
         { name: "Current Picture", content: <img src={currentUserPicture} className="md:size-32 size-12" /> },
         { name: "Related Tasks", content: "Change the computer theme" },
@@ -21,7 +16,6 @@ export default function UserAccountsComponent() {
     const Apply = () => {
         if (selectedPicture) {
             currentUserPicture = selectedPicture.picture;
-            localStorage.setItem("userPicture", JSON.stringify(selectedPicture));
             setSelectedPicture(null);
         }
     }

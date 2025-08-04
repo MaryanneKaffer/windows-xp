@@ -19,7 +19,8 @@ export const desktopMenuData = (setOpenWindows: (arg0: (prev: any) => any) => vo
     },
     {
         name: "New",
-        divider: true
+        divider: true,
+        functionList: [{ name: "Folder" }, { name: "Text Document" }],
     },
     {
         name: "Properties",
