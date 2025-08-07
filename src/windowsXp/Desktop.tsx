@@ -16,7 +16,7 @@ import folderClosedIcon from "@/public/icons/folderClosedIcon.png";
 import textDocumentIcon from "@/public/icons/textDocumentIcon.png"
 
 export default function Desktop() {
-  const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
+  const [openWindows, setOpenWindows] = useState<{ name: string; icon: string; type: string | null; fixedSize?: boolean; isProperties?: boolean; width?: string; height?: string; mobileWidth?: string; mobileHeight?: string; }[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [icon, setIcon] = useState<StaticImageData | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -121,7 +121,7 @@ export default function Desktop() {
         </div>
         {
           openWindows.map((window) => (
-            <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} width={window.width ?? ""} height={window.height ?? ""}
+            <FloatingWindow key={window.name} name={window.name} icon={window.icon} type={window.type} onClose={() => setOpenWindows((prev) => prev.filter((win) => win.name !== window.name))} fixedSize={window.fixedSize ?? false} isProperties={window.isProperties ?? false} width={window.width ?? ""} height={window.height ?? ""}
               mobileWidth={window.mobileWidth ?? "80%"} mobileHeight={window.mobileHeight ?? "50%"} activeWindow={activeWindow} setActiveWindow={setActiveWindow} isHidden={isHidden} setIsHidden={handleSetIsHidden}
             />
           ))
