@@ -7,6 +7,7 @@ interface Appearance {
     startbutton: string;
     window: string;
     inactiveWindow: string;
+    inactiveBorder: string;
     systemtray: string;
     border: string;
     startmenu: string;
@@ -32,7 +33,7 @@ interface AppearanceDisplayComponentProps {
 export function AppearanceDisplayComponent({ selectedAppearance, setSelectedAppearance, currentAppearance }: AppearanceDisplayComponentProps) {
     return (
         <div className="w-full lg:h-[85%] h-[305px] border-gray-400 border-[2px] rounded-sm  rounded-t-none text-black lg:px-5 lg:py-3 py-1 px-3">
-            {selectedAppearance.sample && (<Image src={selectedAppearance.sample} alt="Theme" width={500} height={220} className="mt-1 lg:h-[200px]" />)}
+            {selectedAppearance.sample && (<Image src={selectedAppearance.sample} alt={selectedAppearance.name} width={500} height={220} className="mt-1 lg:h-[200px] object-cover" />)}
             <div className="place-items-center flex gap-2 lg:h-auto h-[140px]">
                 <div className="w-[55%] lg:leading-[27px] leading-[20px]">
                     <p className="">Windows and buttons:</p>

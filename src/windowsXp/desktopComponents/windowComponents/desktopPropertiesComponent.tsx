@@ -11,7 +11,7 @@ import { ScreenSavers } from "@/config/data/windowData/displayPropertiesData/scr
 import { SettingsComponent } from "./displayPropertiesComponents/settingsComponent";
 
 interface Appearance {
-    name: string; taskbar: string; startbutton: string; window: string; inactiveWindow: string; systemtray: string; border: string; startmenu: string; sample: string; buttonborder: string;
+    name: string; taskbar: string; startbutton: string; window: string; inactiveWindow: string; inactiveBorder: string; systemtray: string; border: string; startmenu: string; sample: string; buttonborder: string;
     disabled?: boolean; shadow1: string; shadow2: string; light?: boolean; mainColor?: string; activeTaskbarButton?: string; color: string; clickTaskbarButton?: string; taskbarButton?: string
 }
 

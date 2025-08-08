@@ -51,7 +51,7 @@ export default function UserAccountsComponent() {
                 <div className="md:w-full w-fit lg:p-10 px-4 py-2">
                     <p className={`lg:text-6xl text-2xl leading-[20px] opacity-70 font-bold ${currentAppearance.mainColor}`}>Pick a new picture for your account</p>
                     <p className="lg:text-2xl text-lg leading-[15px] opacity-70 mt-3 font-bold text-black">The picture you choose will appear on the <span className={`${currentAppearance.mainColor} cursor-pointer border-b border-dashed ${currentAppearance.border} `}>Welcome screen</span>.</p>
-                    <div className="overflow-y-auto h-[36.5%] w-full lg:border-3 border-2 mt-5 grid grid-cols-3 lg:gap-[7px] lg:p-2 p-1">
+                    <div className="overflow-y-auto h-[36.5%] w-full lg:border-3 border-2 mt-5 md:flex md:flex-wrap grid grid-cols-3 lg:gap-[7px] lg:p-2 p-1">
                         {userPictures.map((picture, index) => (
                             <button key={picture.name} onClick={() => setSelectedPicture(userPictures[index])} className={`${picture === selectedPicture ? `${currentAppearance.border}` : "border-transparent"} lg:border-5 border-3 cursor-default`}  >
                                 <Image alt={picture.name} src={picture.picture} width={100} height={100} className="lg:w-[100px] w-[45px] border-transparent lg:border-3 border-2" />

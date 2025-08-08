@@ -53,6 +53,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, i
         const randomTop = Math.floor(Math.random() * (maxTop - minTop + 1) + minTop);
 
         setPosition({ top: randomTop, left: randomLeft });
+        setActiveWindow(name);
     }, []);
 
     const hasPlayedSound = React.useRef(false);
@@ -69,8 +70,8 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, i
     return (
         <div >
             <div ref={isMaximized ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement"
-                className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
-                lg:absolute absolute ${activeWindow === name ? `${currentAppearance.window} z-10` : `z-0 ${currentAppearance.inactiveWindow} `} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
+                className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset p-0 border-x-5 border-b-5 !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
+                lg:absolute absolute ${activeWindow === name ? `${currentAppearance.border} ${currentAppearance.window} z-10` : `z-0 ${currentAppearance.inactiveBorder} ${currentAppearance.inactiveWindow} `} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
                 style={{
                     top: isMaximized ? 0 : position.top,
                     left: isMaximized ? 0 : position.left,
@@ -78,6 +79,7 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, i
                     height: isMaximized ? `${window.innerHeight - 48}px` : undefined,
                 }}
             >
+                {activeWindow !== name && <div className="w-[100%] h-[95%] top-10 absolute z-10 bg-gray-100 opacity-35" />}
                 <div {...moveProps} className="!flex !flex-row place-items-center h-[45px] relative !p-0 !cursor-default" onDoubleClick={() => setIsMaximized(!isMaximized)}>
                     <div className="ml-2 flex">
                         {icon && <Image src={icon} draggable={false} alt={name} width={30} height={30} className="mr-2" />}
@@ -86,23 +88,23 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, i
                     <div className="flex gap-1 ml-auto" >
                         {isProperties ?
                             <button type="button" className="!my-auto ">
-                                <img draggable="false" src={questionIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                                <img draggable="false" src={questionIcon.src} alt="Close" className={`w-[33px] h-[33px] cursor-default active:brightness-75 ${activeWindow !== name && "opacity-50"}`} />
                             </button>
                             :
                             <>
                                 <button type="button" className="!my-auto " onClick={handleMinimize}>
-                                    <img draggable="false" src={minimizeIcon.src} alt="Minimize" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                                    <img draggable="false" src={minimizeIcon.src} alt="Minimize" className={`w-[33px] h-[33px] cursor-default active:brightness-75 ${activeWindow !== name && "opacity-50"}`} />
                                 </button>
                                 {!fixedSize && <button type="button" className="!my-auto">
-                                    <img draggable="false" src={restoreIcon.src} alt="Maximize" onClick={() => setIsMaximized(!isMaximized)} className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                                    <img draggable="false" src={restoreIcon.src} alt="Maximize" onClick={() => setIsMaximized(!isMaximized)} className={`w-[33px] h-[33px] cursor-default active:brightness-75 ${activeWindow !== name && "opacity-50"}`} />
                                 </button>}
                             </>
                         }
                         <button type="button" className="!my-auto mr-2 " onClick={onClose}>
-                            <img draggable="false" src={exitIcon.src} alt="Close" className="w-[33px] h-[33px] cursor-default active:brightness-75" />
+                            <img draggable="false" src={exitIcon.src} alt="Close" className={`w-[33px] h-[33px] cursor-default active:brightness-75 ${activeWindow !== name && "opacity-50"}`} />
                         </button>
                     </div>
-                    <div className={`bg-gradient-to-t ${currentAppearance.shadow1} h-[10px] w-full absolute top-[32px] left-[0px]`}></div>
+                    <div className={`bg-gradient-to-t ${activeWindow === name && `${currentAppearance.shadow1}`} h-[10px] w-full absolute top-[32px] left-[0px]`}></div>
                 </div>
                 <div className="h-[100%] bg-white overflow-hidden">
                     {type === "notepad" && <NotepadComponent />}

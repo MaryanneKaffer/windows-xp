@@ -44,7 +44,7 @@ export const desktopData = [
         width: "w-[20vw]",
         height: "h-[50vh]",
         mobileWidth: "w-[85vw]",
-        mobileHeight: "h-fit",
+        mobileHeight: "h-[40vh]",
     },
     {
         name: "Calculator",

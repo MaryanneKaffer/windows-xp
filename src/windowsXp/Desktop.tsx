@@ -92,7 +92,7 @@ export default function Desktop() {
       setIsAdding(false);
     }
   };
-
+  
   if (showOff) return <ShutdownScreen />
 
   return (

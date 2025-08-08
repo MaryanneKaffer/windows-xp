@@ -35,6 +35,7 @@ const config = {
 				zuneStartButton: 'linear-gradient(to bottom, rgb(255, 107, 39) 0%, rgb(255, 159, 114) 10%, rgb(255, 197, 170) 15%,rgb(255, 121, 59) 40%, rgb(110, 36, 1) 80%, rgb(110, 36, 1)95%, rgb(197, 89, 40)99%)',
 				zuneSystemTray: 'linear-gradient(to bottom,rgb(56, 56, 56) 0%,rgb(75, 75, 75) 45%, rgb(54, 54, 54) 45%, rgb(26, 26, 26) 55%)',
 				zuneWindow: 'linear-gradient(to bottom,rgb(75, 75, 75) 3.5%,rgb(0, 0, 0) 4.5%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
+				zuneInactive: 'linear-gradient(to bottom,rgb(122, 122, 122) 3.5%,rgb(73, 73, 73) 4.5%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
 				zuneStartmenu: 'linear-gradient(to bottom,rgb(75, 75, 75) 8%,rgb(0, 0, 0) 9%, rgb(75, 75, 75) 95.5%, rgb(26, 26, 26) 96.5%,rgb(0, 0, 0) 99%)',
 
 				//Lollypop Appearance
@@ -42,14 +43,15 @@ const config = {
 				lollypopStartButton: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(161, 163, 187)18%, rgb(162, 164, 187) 50%, rgb(255, 255, 255) 90%, rgb(158, 158, 158) 99%)',
 				lollypopSystemTray: 'linear-gradient(to bottom,rgb(252, 219, 255) 0%,rgb(247, 154, 255) 18%, rgb(247, 154, 255) 90%, rgb(241, 85, 255) 99%)',
 				lollypopWindow: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%, rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
+				lollypopInactive: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%, rgb(224, 168, 230) 1%,rgb(255, 255, 255) 50%,rgb(224, 168, 230) 99%)',
 				lollypopStartmenu: 'linear-gradient(to bottom,rgb(250, 191, 255) 0%,rgb(241, 86, 255) 1%,rgb(255, 255, 255) 50%,rgb(241, 86, 255) 99%)',
-
 
 				//Silver Appearance
 				silverTaskBar: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(161, 163, 187)18%, rgb(162, 164, 187) 50%, rgb(255, 255, 255) 90%, rgb(158, 158, 158) 99%)',
 				silverStartButton: 'linear-gradient(to bottom, rgb(6, 173, 0) 0%, rgb(178, 255, 168) 10%, rgb(255, 255, 255) 15%,rgb(6, 168, 0) 40%, rgb(3, 102, 0) 80%, rgb(4, 116, 0) 95%, rgb(5, 160, 0) 99%)',
 				silverSystemTray: 'linear-gradient(to bottom,rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgb(161, 163, 187) 60%)',
 				silverWindow: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(161, 163, 187) 1%,rgb(255, 255, 255) 6%, rgb(255, 255, 255) 92%,rgb(148, 150, 175) 99%)',
+				silverInactive: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(184, 187, 214) 1%,rgb(255, 255, 255) 6%, rgb(255, 255, 255) 92%,rgb(179, 181, 211) 99%)',
 				silverStartmenu: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(148, 150, 175) 1%,rgb(255, 255, 255) 13%, rgb(255, 255, 255) 92%,rgb(148, 150, 175) 99%)',
 
 				//Olive Green Appearance
@@ -57,6 +59,7 @@ const config = {
 				oliveStartButton: 'linear-gradient(to bottom, rgb(146, 196, 146) 0%, rgb(144, 201, 136) 10%, rgb(255, 255, 255) 15%,rgb(106, 145, 104) 40%, rgb(79, 105, 78) 80%, rgb(90, 114, 90) 95%, rgb(118, 156, 116) 99%)',
 				oliveSystemTray: 'linear-gradient(to bottom,rgb(243, 255, 172) 0%, rgb(243, 255, 172) 20%, rgb(197, 196, 115) 99%)',
 				oliveWindow: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(180, 202, 148)  1%,rgb(180, 202, 148)  6%, rgb(255, 255, 255) 92%,rgb(180, 202, 148)  99%)',
+				oliveInactive: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(208, 230, 176)  1%,rgb(214, 233, 186)  6%, rgb(255, 255, 255) 92%,rgb(208, 231, 173)  99%)',
 				oliveStartmenu: 'linear-gradient(to bottom,rgb(255, 255, 255), rgb(173, 192, 142) 1%,rgb(207, 231, 170) 13%, rgb(180, 202, 148) 92%,rgb(180, 202, 148) 99%)',
 
 				divider: 'linear-gradient(to right, transparent, rgba(182, 182, 182) 50%, transparent)',
