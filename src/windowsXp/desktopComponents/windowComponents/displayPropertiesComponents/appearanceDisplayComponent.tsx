@@ -6,6 +6,7 @@ interface Appearance {
     taskbar: string;
     startbutton: string;
     window: string;
+    inactiveWindow: string;
     systemtray: string;
     border: string;
     startmenu: string;

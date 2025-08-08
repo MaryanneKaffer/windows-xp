@@ -47,7 +47,7 @@ export default function CalculatorComponent() {
                 <span className="border-b border-[1px] border-gray-300">
                     {options.map((option, index) => (
                         <button onMouseEnter={() => setisHoveringOpt(index)} onMouseLeave={() => setisHoveringOpt(-1)} key={option}
-                            className={`md:text-xl text-md ${isHoveringOpt === index && `${currentAppearance.color} text-white`} md:px-3 px-2`}>
+                            className={`cursor-default md:text-xl text-md ${isHoveringOpt === index && `${currentAppearance.color} text-white`} md:px-3 px-2`}>
                             {option}
                         </button>
                     ))}

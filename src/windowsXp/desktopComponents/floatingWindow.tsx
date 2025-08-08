@@ -69,8 +69,8 @@ export default function FloatingWindow({ name, icon, type, onClose, fixedSize, i
     return (
         <div >
             <div ref={isMaximized ? undefined : targetRef} onClick={() => setActiveWindow(name)} id="windowElement"
-                className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset ${currentAppearance.window} p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
-                lg:absolute absolute ${activeWindow === name ? "z-10" : ""} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
+                className={`max-w-[screen] ${isHidden.includes(name) && "hidden"} !all-unset p-0 border-x-5 border-b-5 ${currentAppearance.border} !rounded-b-none flex flex-col !gap-0 transition-transform duration-0
+                lg:absolute absolute ${activeWindow === name ? `${currentAppearance.window} z-10` : `z-0 ${currentAppearance.inactiveWindow} `} ${isMaximized ? `w-full` : isDesktop ? `${width} ${height} rounded-t-xl` : `${mobileWidth} ${mobileHeight} rounded-t-xl`}`}
                 style={{
                     top: isMaximized ? 0 : position.top,
                     left: isMaximized ? 0 : position.left,

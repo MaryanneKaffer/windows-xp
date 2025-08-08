@@ -1,6 +1,5 @@
 import WindowsXp from "@/public/themes/windowsXp.png"
 import Zune from "@/public/themes/zune.png"
-import { color } from "framer-motion"
 
 export const Appearance = [
     {
@@ -8,6 +7,7 @@ export const Appearance = [
         taskbar: 'bg-winXpTaskBar',
         startbutton: 'bg-winXpStartButton',
         window: 'bg-winXpWindow',
+        inactiveWindow: "bg-winXpInactive",
         systemtray: 'bg-winXpSystemTray',
         border: "border-[#245DDA]",
         startmenu: 'bg-winXpStartmenu',
@@ -27,6 +27,7 @@ export const Appearance = [
         startbutton: 'bg-lollypopStartButton',
         systemtray: 'bg-lollypopSystemTray',
         window: 'bg-lollypopWindow',
+        inactiveWindow: "bg-winXpInactive",
         border: "border-[rgb(243_114_255)]",
         startmenu: 'bg-lollypopStartmenu',
         sample: Zune.src,
@@ -45,6 +46,7 @@ export const Appearance = [
         startbutton: 'bg-oliveStartButton',
         systemtray: 'bg-oliveSystemTray',
         window: 'bg-oliveWindow',
+        inactiveWindow: "bg-winXpInactive",
         border: "border-[rgb(180_202_148)]",
         startmenu: 'bg-oliveStartmenu',
         sample: Zune.src,
@@ -55,7 +57,7 @@ export const Appearance = [
         color: 'bg-[rgb(180_202_148)]',
         clickTaskbarButton: "active:bg-[rgb(90_114_90)]",
         activeTaskbarButton: "bg-[rgb(90_100_74)]",
-        taskbarButton: 'bg-[rgb(204_216_173)]', 
+        taskbarButton: 'bg-[rgb(204_216_173)]',
     },
     {
         name: "Silver",
@@ -63,6 +65,7 @@ export const Appearance = [
         startbutton: 'bg-silverStartButton',
         systemtray: 'bg-silverSystemTray',
         window: 'bg-silverWindow',
+        inactiveWindow: "bg-winXpInactive",
         border: "border-[rgb(148_150_175)]",
         startmenu: 'bg-silverStartmenu',
         sample: Zune.src,
@@ -82,6 +85,7 @@ export const Appearance = [
         startbutton: 'bg-zuneStartButton',
         systemtray: 'bg-zuneSystemTray',
         window: 'bg-zuneWindow',
+        inactiveWindow: "bg-winXpInactive",
         border: "border-black",
         startmenu: 'bg-zuneStartmenu',
         sample: Zune.src,
@@ -92,6 +96,6 @@ export const Appearance = [
         color: 'bg-[rgb(148_150_175)]',
         clickTaskbarButton: "active:bg-[rgb(107_108_124)]",
         activeTaskbarButton: "bg-[rgb(54_54_54)]",
-        taskbarButton: 'bg-[rgb(75_75_75)]',     
+        taskbarButton: 'bg-[rgb(75_75_75)]',
     },
 ]
